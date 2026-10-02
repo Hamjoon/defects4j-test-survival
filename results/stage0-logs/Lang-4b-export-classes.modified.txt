@@ -8,4 +8,4 @@ Running ant (export.classes.modified)...................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.415
+[wall seconds] 0.408

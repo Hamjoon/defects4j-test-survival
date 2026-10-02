@@ -92,7 +92,7 @@
     ]
   },
   "Closure": {
-    "requested_bug": "1",
+    "requested_bug": "4",
     "project_record_count": 68,
     "available_bug_ids": [
       "4",
@@ -159,7 +159,13 @@
       "169",
       "174"
     ],
-    "matching_records": []
+    "matching_records": [
+      {
+        "project_name": "Closure",
+        "bug-id": "4",
+        "class": "NamedType"
+      }
+    ]
   },
   "Mockito": {
     "requested_bug": "1",

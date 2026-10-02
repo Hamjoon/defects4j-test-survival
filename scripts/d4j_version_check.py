@@ -8,7 +8,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path('/work')
-TARGETS = [('Lang', '4'), ('Csv', '1'), ('Cli', '5')]
+TARGETS = [('Lang', '4'), ('Csv', '1'), ('Cli', '5'), ('Closure', '4'), ('Mockito', '1')]
 
 
 def normalize(text):

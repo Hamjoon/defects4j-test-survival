@@ -8,4 +8,4 @@ Running ant (export.cp.compile)............................................ OK
 
 
 [exit status] 0
-[wall seconds] 1.489
+[wall seconds] 0.403

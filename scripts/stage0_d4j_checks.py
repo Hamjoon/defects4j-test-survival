@@ -11,7 +11,7 @@ ROOT = Path('/work')
 RESULTS = ROOT / 'results'
 LOGS = RESULTS / 'stage0-logs'
 EXPORTS = RESULTS / 'stage0-export'
-VERSIONS = ['Lang-4b', 'Lang-4f', 'Csv-1b', 'Csv-1f', 'Cli-5b', 'Cli-5f', 'Closure-1b', 'Mockito-1b']
+VERSIONS = ['Lang-4b', 'Lang-4f', 'Csv-1b', 'Csv-1f', 'Cli-5b', 'Cli-5f', 'Closure-4b', 'Closure-4f', 'Mockito-1b', 'Mockito-1f']
 PROPERTIES = ['classes.modified', 'dir.src.classes', 'dir.src.tests', 'dir.bin.classes', 'dir.bin.tests', 'cp.compile', 'cp.test']
 
 
@@ -26,6 +26,7 @@ def command(args, log):
 def save(data):
     (RESULTS / 'stage0-d4j-checks.json').write_text(json.dumps(data, indent=2) + '\n')
     lines = ['# Stage 0 Defects4J checks', '', f"Started: {data['timestamp_utc']}", '',
+             'Per the 2026-10-02 addendum, Closure-1b was checked out and then removed along with its active export file; the initial evidence is archived under `archive/stage0-initial-stop/`. Closure-4b/4f replaces it, and Mockito-1f is included. All ten comparisons are required.', '',
              '| Checkout | classes.modified | JSON classes match | Compile | Wall seconds | dir.src.classes | dir.src.tests | cp.test produced |',
              '|---|---|---|---|---:|---|---|---|']
     for row in data['checkouts']:
@@ -57,12 +58,22 @@ def main():
             checkout = ROOT / 'd4j' / version
             row = {'checkout': version, 'exports': {}}
             data['checkouts'].append(row)
-            print(f'Checkout {version}', flush=True)
-            result, elapsed = command(['defects4j', 'checkout', '-p', project, '-v', revision, '-w', str(checkout)], LOGS / f'{version}-checkout.txt')
-            row['checkout_returncode'] = result.returncode
-            row['checkout_wall_seconds'] = elapsed
-            if result.returncode:
-                raise RuntimeError(f'Checkout failed: {version}; see its checkout log.')
+            config_path = checkout / '.defects4j.config'
+            if config_path.is_file():
+                config = dict(line.split('=', 1) for line in config_path.read_text().splitlines() if '=' in line and not line.startswith('#'))
+                if config.get('pid') != project or config.get('vid') != revision:
+                    raise RuntimeError(f'Existing checkout identity mismatch: {version}: {config}')
+                row['checkout_reused'] = True
+                row['checkout_returncode'] = 0
+                print(f'Reuse verified checkout {version}', flush=True)
+            else:
+                print(f'Checkout {version}', flush=True)
+                result, elapsed = command(['defects4j', 'checkout', '-p', project, '-v', revision, '-w', str(checkout)], LOGS / f'{version}-checkout.txt')
+                row['checkout_reused'] = False
+                row['checkout_returncode'] = result.returncode
+                row['checkout_wall_seconds'] = elapsed
+                if result.returncode:
+                    raise RuntimeError(f'Checkout failed: {version}; see its checkout log.')
             save(data)
         for row in data['checkouts']:
             version = row['checkout']

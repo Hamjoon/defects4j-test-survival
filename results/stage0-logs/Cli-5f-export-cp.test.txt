@@ -8,4 +8,4 @@ Running ant (export.cp.test)............................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.378
+[wall seconds] 0.380

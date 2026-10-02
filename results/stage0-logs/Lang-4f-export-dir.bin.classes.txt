@@ -8,4 +8,4 @@ Running ant (export.dir.bin.classes)....................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.332
+[wall seconds] 0.345

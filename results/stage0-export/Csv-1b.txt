@@ -8,7 +8,7 @@ Running ant (export.classes.modified)...................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.359
+[wall seconds] 0.380
 
 $ defects4j export -p dir.src.classes -w /work/d4j/Csv-1b
 
@@ -20,7 +20,7 @@ Running ant (export.dir.src.classes)....................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.340
+[wall seconds] 0.360
 
 $ defects4j export -p dir.src.tests -w /work/d4j/Csv-1b
 
@@ -32,7 +32,7 @@ Running ant (export.dir.src.tests)......................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.344
+[wall seconds] 0.354
 
 $ defects4j export -p dir.bin.classes -w /work/d4j/Csv-1b
 
@@ -44,7 +44,7 @@ Running ant (export.dir.bin.classes)....................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.338
+[wall seconds] 0.369
 
 $ defects4j export -p dir.bin.tests -w /work/d4j/Csv-1b
 
@@ -56,7 +56,7 @@ Running ant (export.dir.bin.tests)......................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.357
+[wall seconds] 0.437
 
 $ defects4j export -p cp.compile -w /work/d4j/Csv-1b
 
@@ -68,7 +68,7 @@ Running ant (export.cp.compile)............................................ OK
 
 
 [exit status] 0
-[wall seconds] 0.768
+[wall seconds] 0.406
 
 $ defects4j export -p cp.test -w /work/d4j/Csv-1b
 
@@ -80,4 +80,4 @@ Running ant (export.cp.test)............................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.383
+[wall seconds] 0.390

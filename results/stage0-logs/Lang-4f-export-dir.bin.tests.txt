@@ -8,4 +8,4 @@ Running ant (export.dir.bin.tests)......................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.350
+[wall seconds] 0.329

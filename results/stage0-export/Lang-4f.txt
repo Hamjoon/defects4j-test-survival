@@ -8,7 +8,7 @@ Running ant (export.classes.modified)...................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.340
+[wall seconds] 0.418
 
 $ defects4j export -p dir.src.classes -w /work/d4j/Lang-4f
 
@@ -20,7 +20,7 @@ Running ant (export.dir.src.classes)....................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.320
+[wall seconds] 0.344
 
 $ defects4j export -p dir.src.tests -w /work/d4j/Lang-4f
 
@@ -32,7 +32,7 @@ Running ant (export.dir.src.tests)......................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.365
+[wall seconds] 0.366
 
 $ defects4j export -p dir.bin.classes -w /work/d4j/Lang-4f
 
@@ -44,7 +44,7 @@ Running ant (export.dir.bin.classes)....................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.332
+[wall seconds] 0.345
 
 $ defects4j export -p dir.bin.tests -w /work/d4j/Lang-4f
 
@@ -56,7 +56,7 @@ Running ant (export.dir.bin.tests)......................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.350
+[wall seconds] 0.329
 
 $ defects4j export -p cp.compile -w /work/d4j/Lang-4f
 
@@ -68,7 +68,7 @@ Running ant (export.cp.compile)............................................ OK
 
 
 [exit status] 0
-[wall seconds] 1.489
+[wall seconds] 0.403
 
 $ defects4j export -p cp.test -w /work/d4j/Lang-4f
 
@@ -80,4 +80,4 @@ Running ant (export.cp.test)............................................... OK
 
 
 [exit status] 0
-[wall seconds] 0.408
+[wall seconds] 0.419
