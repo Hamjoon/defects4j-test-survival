@@ -183,6 +183,29 @@ def reference():
     return result
 
 
+def reconcile_runtime_counts():
+    """Retain observed method counts when a timeout prevents the JUnit summary."""
+    rows=manifest(); out=[]
+    for row in rows:
+        if not row.get('compile_ok'): continue
+        path=Path(row['file']).parent/'run-summary.json'
+        observed=json.loads(path.read_text())
+        methods=observed['methods']; summary=observed['summary']
+        row['counts_partial']=not bool(summary)
+        if not summary:
+            completed={e['method'] for e in methods if e.get('status') in ['pass','fail']}
+            failed={e['method'] for e in methods if e.get('status')=='fail'}
+            ignored={e['method'] for e in methods if e.get('status')=='ignored'}
+            row['tests_run']=len(completed); row['failed']=len(failed); row['ignored']=len(ignored)
+            observed['observed_completed_methods']=len(completed)
+            observed['counts_partial']=True
+            save(path,observed)
+        out.append({k:row[k] for k in ['bug_id','class','technique','file','fqcn','tests_run','passed','failed','ignored','run_error','run_exit_status','run_seconds','counts_partial']})
+    write_csv(RESULTS/'run.csv',['bug_id','class','technique','file','fqcn','tests_run','passed','failed','ignored','run_error','run_exit_status','run_seconds','counts_partial'],out)
+    save(RESULTS/'evaluation-manifest.json',rows)
+    print('Runtime counts reconciled; partial-summary files:',sum(r['counts_partial'] for r in out),flush=True)
+
+
 def report():
     rows=manifest(); gen=json.loads((RESULTS/'generation-summary.json').read_text()); ref=reference()
     lines=['# Lang Part 1 matrix','','Model: openai/gpt-oss-120b. One generation per record and technique; no generated-test edits or normalization.','','| technique | generated | MSR | CSR | syntax ok | compiles | files that run | test methods run / passed | CUT line cov (mean over compiled files) |','|---|---:|---:|---:|---:|---:|---:|---|---:|']
@@ -216,6 +239,8 @@ def report():
     report_lines += ['',f'Total Lang rows: {ref["lang_rows"]}. Regex covers every Lang row: {ref["regex_covers_every_lang_row"]}. Unmatched rows: {ref["unmatched_count"]}. Counts match the Cowork pre-check: {ref["matches_expected"]}. This is a historical GPT-3.5-turbo reference rate only, not a comparison target. Source SHA-256: {ref["sha256"]}.','','## Deviations and interpretation','','- Gary authorized openai/gpt-oss-120b on 2026-10-03 because the paper’s models are unavailable through APIs. The original Mistral templates and all generation parameters were retained. This is an end-to-end pipeline study with a replacement model, not a numerical replication.','- Container credentials are supplied via ignored docker/.env; the key is still read only from OPENROUTER_API_KEY. No key was recorded in artifacts.','- The reference extraction CSV was absent from the repository copy, so it was copied unchanged from the original author bundle into bundle/extraction_outputs/. Its source/hash are recorded.','- The authors’ extraction reimplementation was used unchanged. Its CSR check is a structural proxy, not compilation; generated files are exactly its combine output. The original script is not claimed to be the recovered historical extractor.','- Step 8 class discovery uses the document’s specified regex. No package repair, import injection, method removal, formatting, or normalization was applied.','- The supplied compile/runtime classpath ordering was retained exactly. cp.test includes older project JUnit jars ahead of the pinned 4.13.2 jar; this can affect compilation/runtime and is part of the specified pipeline.','- Compiled class files are ignored; generated source, diagnostics, per-method results, JaCoCo execution data and reports are retained.','- Probe usage and completion usage include model reasoning tokens; length finishes and empty content are reported without retry or parameter changes.','','## Open questions','', '- The reference rows are validation/filter outcomes rather than a direct modern model comparison; use them only as the document’s requested reference rates.','- Failing generated tests were run on buggy revisions. They may expose known defects or contain incorrect assertions; no correctness repair or manual oracle adjudication was performed.','- Any survival study across later versions belongs to Part 2 and needs a separate instruction.','']
     issues=[{'bug_id':r['bug_id'],'technique':r['technique'],'run_error':r.get('run_error'),'coverage_error':r.get('coverage',{}).get('coverage_error')} for r in rows if r.get('run_error') or r.get('coverage',{}).get('coverage_error')]
     if issues: report_lines+=['## Run/coverage issues','','```json',json.dumps(issues,indent=2),'```','']
+    if any(r.get('counts_partial') for r in rows):
+        report_lines+=['Timeouts prevented a final JUnit summary for some files. Their reported tests_run/failed/ignored counts come from observed completed per-method events and are lower bounds; a method still running at termination is not counted. These files remain run-error, and all observed events and stderr are retained. JaCoCo coverage from the terminated JVM is retained when available. No generated test was edited or rerun.', '']
     providers=Counter(r['provider'] for r in gen['runs'])
     attempts=list(Path('runs/lang').rglob('run.json'))
     report_lines+=['## API routing and attempts','',
@@ -232,6 +257,7 @@ def main():
     p=argparse.ArgumentParser(); p.add_argument('step',choices=['8','9','10','11','12']); args=p.parse_args()
     start=time.monotonic(); stamp=datetime.now(timezone.utc).isoformat()
     {'8':extract,'9':syntax,'10':compile_tests,'11':run_tests,'12':report}[args.step]()
+    if args.step=='11': reconcile_runtime_counts()
     path=RESULTS/'stage-times.json'; times=json.loads(path.read_text()) if path.exists() else {}
     times[args.step]={'started_utc':stamp,'wall_seconds':round(time.monotonic()-start,3)}; save(path,times)
     if args.step=='12':
