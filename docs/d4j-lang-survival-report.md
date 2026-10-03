@@ -62,4 +62,4 @@ Developer rows at 181 to 730 days also contain 6 methods not run (inherited meth
 - 14 records of one project; 45 of 105 record/point pairs are unmeasurable after the package move. The public API of the nine classes did not change within the measured points, which contributes to the LLM compile-failure count of zero.
 - "Executes a changed line" is a coverage rule, not proof that the fix caused the failure; these classes are small, so most tests execute the changed lines. Duplicate removal matched identical bodies only; whether differently worded tests check different behaviour was not measured.
 
-Repository: `Hamjoon/llm4ts-replication`, branch `experiment/2026-10-week1-d4j-replication` (`results/p2-survival-methods.csv`, `results/p2-survival-summary.md`, `docs/`).
+Repository: https://github.com/Hamjoon/defects4j-test-survival, branch `experiment/2026-10-week1-d4j-replication` (`results/p2-survival-methods.csv`, `results/p2-survival-summary.md`, `docs/`).

@@ -1,6 +1,6 @@
 # 미팅 메모 (10/5 월 10:00) — Defects4J Lang 생존 실험
 
-Gary용. 교수님께 보내지 않음. 보고서: `docs/llm4ts-lang-survival-report.pdf`
+Gary용. 교수님께 보내지 않음. 보고서: `docs/d4j-lang-survival-report.pdf`
 
 ## 내 말로 세 문장
 
