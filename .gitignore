@@ -9,3 +9,5 @@ generated/**/classes/
 devtests/**/classes-t/
 survival/**/classes/
 results/.p2-rounds.lock
+
+results/.p2-survival.lock
