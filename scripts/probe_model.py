@@ -1,4 +1,4 @@
-"""Select the available Mistral 7B model and issue the Step 6 probe."""
+"""Probe the user-authorized model using the fixed Step 6 parameters."""
 import json
 import os
 import time
@@ -20,20 +20,16 @@ def main():
     response = requests.get(BASE + '/models', timeout=120)
     response.raise_for_status()
     payload = response.json()
-    save(Path('results/openrouter-models.json'), payload)
+    save(Path('results/probe-model-list.json'), payload)
     ids = {m['id'] for m in payload['data'] if 'mistral-7b' in m['id'].lower()}
     print('Matching model IDs:', *sorted(ids), sep='\n', flush=True)
-    desired = 'mistralai/mistral-7b-instruct-v0.2'
-    if desired in ids:
-        model = desired
-        reason = 'The exact v0.2 model is listed, matching historical open-mistral-7b.'
-    else:
-        candidates = ['mistralai/mistral-7b-instruct-v0.3', 'mistralai/mistral-7b-instruct-v0.1', 'mistralai/mistral-7b-instruct']
-        model = next((m for m in candidates if m in ids), None)
-        if model is None:
-            Path('results/model-probe.md').write_text('# Model probe\n\nStopped: no identifiable Mistral 7B Instruct version is listed.\n\nMatching IDs: ' + repr(sorted(ids)) + '\n')
-            raise RuntimeError('No identifiable Mistral 7B Instruct model available')
-        reason = f'v0.2 is not listed; {model} is the nearest listed Instruct version. Prefer the next release over an equally distant older release.'
+    config = json.loads(Path('results/model-config.json').read_text())
+    model = config['model']
+    reason = config['reason']
+    assert config['temperature'] == 0.7 and config['max_tokens'] == 4096
+    assert config['message_roles'] == ['user']
+    if model not in {m['id'] for m in payload['data']}:
+        raise RuntimeError(f'Authorized model not listed: {model}')
     records = json.loads(Path('bundle/Defects4J-dataset.json').read_text(encoding='utf-8', errors='ignore'))
     record = min((r for r in records if r['project_name'] == 'Lang'), key=lambda r: int(r['token_number_zeroshot']))
     prompt = Path('prompts/rendered') / 'Lang' / str(record['bug-id']) / record['class'] / 'ZSL.txt'
@@ -70,8 +66,8 @@ def main():
         save(target / 'usage.json', result.get('usage', {}))
         meta.update({'finish_reason': choice.get('finish_reason'), 'provider': result.get('provider'), 'response_id': result.get('id'), 'start_marker': '###Test START##' in content, 'end_marker': '###Test END##' in content})
         save(target / 'run.json', meta)
-        save(Path('results/model-selection.json'), {'model': model, 'reason': reason, 'matching_ids': sorted(ids), 'probe_directory': str(target)})
-        lines = ['# Model choice and probe', '', reason, '', 'Matching model IDs: ' + ', '.join(sorted(ids)) + '.', '', f'Record: Lang-{record["bug-id"]} {record["class"]}; authors ZSL tokens: {record["token_number_zeroshot"]}.', '', f'HTTP status: {r.status_code}; finish_reason: {meta["finish_reason"]}; completion tokens: {result.get("usage", {}).get("completion_tokens")}; provider: {meta["provider"]}.', f'Start marker: {meta["start_marker"]}; end marker: {meta["end_marker"]}.', f'Latency: {meta["latency_seconds"]} seconds; attempt: {attempt}.', '', 'First 10 lines:', '', '```text', *content.splitlines()[:10], '```']
+        save(Path('results/model-selection.json'), {'model': model, 'reason': reason, 'matching_ids': sorted(ids), 'probe_directory': str(target), 'temperature': 0.7, 'max_tokens': 4096, 'message_roles': ['user'], 'scope': 'Step 6 and all later steps'})
+        lines = ['# Model choice and probe', '', reason, '', f'Selected model for Step 6 and all later steps: {model}. Parameters: temperature 0.7, max_tokens 4096, one user message, no system message.', '', 'The availability finding for all four paper models was supplied by the user. Original OpenRouter model-list output: results/model-list.json; fresh list: results/probe-model-list.json.', '', 'Matching Mistral 7B model IDs: ' + ', '.join(sorted(ids)) + '.', '', f'Record: Lang-{record["bug-id"]} {record["class"]}; authors ZSL tokens: {record["token_number_zeroshot"]}.', '', f'HTTP status: {r.status_code}; finish_reason: {meta["finish_reason"]}; completion tokens: {result.get("usage", {}).get("completion_tokens")}; provider: {meta["provider"]}.', f'Start marker: {meta["start_marker"]}; end marker: {meta["end_marker"]}.', f'Latency: {meta["latency_seconds"]} seconds; attempt: {attempt}.', '', 'First 10 lines:', '', '```text', *content.splitlines()[:10], '```']
         Path('results/model-probe.md').write_text('\n'.join(lines) + '\n')
         print('\n'.join(lines), flush=True)
         return

@@ -1,12 +1,14 @@
 {
-  "timestamp_utc": "2026-10-03T05:15:56.341511+00:00",
+  "timestamp_utc": "2026-10-03T05:21:51.559542+00:00",
   "step": 6,
-  "status": "blocked",
+  "status": "completed",
   "container_key_present": true,
-  "api_requests_made": 1,
-  "generation_requests_made": 0,
-  "model_list_status": 200,
-  "listed_models": 466,
-  "matching_mistral_7b_ids": [],
-  "reason": "OpenRouter model list contains no Mistral 7B Instruct model; no model chosen and no generation attempted."
+  "model": "openai/gpt-oss-120b",
+  "generation_requests_made": 1,
+  "http_status": 200,
+  "finish_reason": "stop",
+  "completion_tokens": 2266,
+  "provider": "CoreWeave",
+  "reported_cost": 0.00040445,
+  "reason": "User-authorized replacement model probe succeeded; stop for review before Step 7."
 }

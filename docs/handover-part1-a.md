@@ -1,6 +1,6 @@
 # Part 1 handover A
 
-Steps 1–5 completed. Step 6 reached OpenRouter successfully but stopped because no Mistral 7B Instruct model is listed. No generation was attempted. Stop for Gary’s review before selecting a replacement or starting Step 7.
+Steps 1–6 completed. Stop for Gary’s confirmation before Step 7.
 
 ## Environment
 
@@ -61,13 +61,38 @@ Template checks passed: ZSL contains no fewshot_example placeholder; FSL contain
 
 ## Step 6: probe
 
-# Model probe
+# Model choice and probe
 
-Stopped: no identifiable Mistral 7B Instruct version is listed.
+User-authorized replacement on 2026-10-03: none of the paper's four models is callable through an API as of today, per user availability finding. OpenRouter and Mistral API no longer serve Mistral 7B or Mixtral 8x7B.
 
-Matching IDs: []
+Selected model for Step 6 and all later steps: openai/gpt-oss-120b. Parameters: temperature 0.7, max_tokens 4096, one user message, no system message.
 
-One model-list request succeeded (HTTP 200, 466 listed models, zero matching Mistral 7B IDs). No generation request was made and no probe response exists. Generation cost is zero; completion status, finish_reason, tokens, provider, markers and first ten lines are unavailable.
+The availability finding for all four paper models was supplied by the user. Original OpenRouter model-list output: results/model-list.json; fresh list: results/probe-model-list.json.
+
+Matching Mistral 7B model IDs: .
+
+Record: Lang-28 NumericEntityUnescaper; authors ZSL tokens: 559.
+
+HTTP status: 200; finish_reason: stop; completion tokens: 2266; provider: CoreWeave.
+Start marker: True; end marker: True.
+Latency: 32.516 seconds; attempt: 1.
+
+First 10 lines:
+
+```text
+###Test START##
+/*
+ * Unit tests for {@link org.apache.commons.lang3.text.translate.NumericEntityUnescaper}.
+ *
+ * These tests are written for JUnit 4 and aim to cover all logical paths
+ * inside the {@code translate} method, including normal operation,
+ * hexadecimal handling, error handling and edge‑cases.
+ */
+package org.apache.commons.lang3.text.translate;
+
+```
+
+Probe artifacts are saved under runs/probe; see usage.json for reported cost.
 
 ## Unexpected findings and mechanical fixes
 
@@ -79,10 +104,16 @@ One model-list request succeeded (HTTP 200, 466 listed models, zero matching Mis
 
 ## Resume
 
-Await Gary’s review of unavailable Mistral 7B models. A replacement model or another provider requires an explicit experiment decision. No push was performed.
+Await Gary’s confirmation before Step 7. No push was performed.
 
-## Latest Step 6 attempt
+## Authorized model deviation
 
-Attempt recorded at 2026-10-03T05:15:56.341511+00:00. OpenRouter model list contains no Mistral 7B Instruct model; no model chosen and no generation attempted. Evidence: results/probe-preflight.json.
+User-authorized replacement on 2026-10-03: none of the paper's four models is callable through an API as of today, per user availability finding. OpenRouter and Mistral API no longer serve Mistral 7B or Mixtral 8x7B.
 
-The key value was never printed or saved. Step 7 remains unstarted.
+Use openai/gpt-oss-120b for Step 6 and every later generation. Parameters remain temperature 0.7, max_tokens 4096, one user message and no system message. The saved model configuration is results/model-config.json. Original model-list output is preserved byte-for-byte at results/model-list.json.
+
+The statement that none of the paper’s four models remains callable through an API is the user’s availability finding as of 2026-10-03. The saved OpenRouter list directly supports the absence of Mistral 7B. This run uses a replacement model and does not numerically replicate the paper.
+
+Probe usage: 641 prompt tokens, 2266 completion tokens (including 999 reasoning tokens). Reported cost: $0.00040445. Request parameters were verified against the fixed protocol, assistant content was verified byte-for-byte against the raw response, and the original saved model list was verified identical to results/model-list.json.
+
+Step 7 has not started. Stop for Gary’s review; no push was performed.

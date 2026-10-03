@@ -64,6 +64,15 @@ def main():
         lines += ['## Latest Step 6 attempt', '',
             f'Attempt recorded at {check["timestamp_utc"]}. {check["reason"]} Evidence: results/probe-preflight.json.', '',
             'The key value was never printed or saved. Step 7 remains unstarted.', '']
+    if completed:
+        config = json.loads(Path('results/model-config.json').read_text())
+        usage = json.loads((Path(selection['probe_directory']) / 'usage.json').read_text())
+        lines += ['## Authorized model deviation', '',
+            config['reason'], '',
+            f'Use {selection["model"]} for Step 6 and every later generation. Parameters remain temperature 0.7, max_tokens 4096, one user message and no system message. The saved model configuration is results/model-config.json. Original model-list output is preserved byte-for-byte at results/model-list.json.', '',
+            'The statement that none of the paper’s four models remains callable through an API is the user’s availability finding as of 2026-10-03. The saved OpenRouter list directly supports the absence of Mistral 7B. This run uses a replacement model and does not numerically replicate the paper.', '',
+            f'Probe usage: {usage["prompt_tokens"]} prompt tokens, {usage["completion_tokens"]} completion tokens (including {usage.get("completion_tokens_details", {}).get("reasoning_tokens", 0)} reasoning tokens). Reported cost: ${usage.get("cost")}. Request parameters were verified against the fixed protocol, assistant content was verified byte-for-byte against the raw response, and the original saved model list was verified identical to results/model-list.json.', '',
+            'Step 7 has not started. Stop for Gary’s review; no push was performed.', '']
     Path('docs/handover-part1-a.md').write_text('\n'.join(lines))
     print('Wrote docs/handover-part1-a.md')
 
