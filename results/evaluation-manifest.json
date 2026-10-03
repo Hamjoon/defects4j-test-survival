@@ -15,10 +15,15 @@
     "materialized": true,
     "file": "generated/Lang-4/ZSL/LookupTranslatorTest.java",
     "class_name": "LookupTranslatorTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "40600d1c74547ce4c9845b18dd428e9761ad820a812cd95116bd1504525a7ca9",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.403
   },
   {
     "bug_id": "4",
@@ -93,10 +98,15 @@
     "materialized": true,
     "file": "generated/Lang-4/GToT/LookupTranslatorTest.java",
     "class_name": "LookupTranslatorTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "619aa85eaecf2c3881a4cb439d57cb4861b555fa6c8522d361830e03f0428e6f",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.282
   },
   {
     "bug_id": "5",
@@ -276,10 +286,15 @@
     "materialized": true,
     "file": "generated/Lang-6/GToT/CharSequenceTranslatorTest.java",
     "class_name": "CharSequenceTranslatorTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "4953362a08ed6115225660ea3896fe513182d835cf6e5c219e68c791344f80cb",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.318
   },
   {
     "bug_id": "11",
@@ -297,10 +312,15 @@
     "materialized": true,
     "file": "generated/Lang-11/ZSL/RandomStringUtilsTest.java",
     "class_name": "RandomStringUtilsTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "40766fd7940a63355bf402557c98bc239f2472d5ff4bf1ed187f6452929833be",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.31
   },
   {
     "bug_id": "11",
@@ -357,10 +377,15 @@
     "materialized": true,
     "file": "generated/Lang-11/ToT/RandomStringUtilsTest.java",
     "class_name": "RandomStringUtilsTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "3aa082cc2a9dca87e2600c75cf5e56c5dfcc2b3add67eccc7c3740599dab597e",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.298
   },
   {
     "bug_id": "11",
@@ -378,10 +403,15 @@
     "materialized": true,
     "file": "generated/Lang-11/GToT/RandomStringUtilsTest.java",
     "class_name": "RandomStringUtilsTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "f35a9798eb8abfc95eb61c89ace9fefc86e12c28f222f52c3d84039997c65b0b",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.31
   },
   {
     "bug_id": "12",
@@ -582,10 +612,15 @@
     "materialized": true,
     "file": "generated/Lang-17/ZSL/CharSequenceTranslatorTest.java",
     "class_name": "CharSequenceTranslatorTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "2b4453eecc1a8dc507a4f130e8516919b48799d7c05ad83b7ecf871113b07ad2",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.294
   },
   {
     "bug_id": "17",
@@ -603,10 +638,15 @@
     "materialized": true,
     "file": "generated/Lang-17/FSL/CharSequenceTranslatorTest.java",
     "class_name": "CharSequenceTranslatorTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "8bba342b861b402003d8150cca572144be8aca7eb1e443c96928b5ef7b7f39bc",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.277
   },
   {
     "bug_id": "17",
@@ -678,10 +718,15 @@
     "materialized": true,
     "file": "generated/Lang-19/ZSL/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "3ba9bfd14fa70542f7b2f6f05e01ede9cc66180d927e19e7c5dd89777700e01c",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.271
   },
   {
     "bug_id": "19",
@@ -735,10 +780,15 @@
     "materialized": true,
     "file": "generated/Lang-19/ToT/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "685ee9dc1f4c2d7e91736effb8cacb764fb32d4b3ba66769a9762e6d6b0e1e40",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.271
   },
   {
     "bug_id": "19",
@@ -792,10 +842,15 @@
     "materialized": true,
     "file": "generated/Lang-28/FSL/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "fb6ffdb1bfbf0c0dfe317c12902be74ee368ed8d3750b7f17f98266ed7898290",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.277
   },
   {
     "bug_id": "28",
@@ -813,10 +868,15 @@
     "materialized": true,
     "file": "generated/Lang-28/CoT/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "18006657c272e540d10144d3cb08628a3e387ce384a49e662ed0f007b99e6709",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.278
   },
   {
     "bug_id": "28",
@@ -834,10 +894,15 @@
     "materialized": true,
     "file": "generated/Lang-28/ToT/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "9e6ef609f67446d88a34383a0c8f7b50d6d8ac373638cd430be1fcded0f3eb20",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.353
   },
   {
     "bug_id": "28",
@@ -855,10 +920,15 @@
     "materialized": true,
     "file": "generated/Lang-28/GToT/NumericEntityUnescaperTest.java",
     "class_name": "NumericEntityUnescaperTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "dc4bf90568cb7d6ce66c1f4f39125d8f66b40589e3a2ceeada7eab43683d366c",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.291
   },
   {
     "bug_id": "43",
@@ -984,10 +1054,15 @@
     "materialized": true,
     "file": "generated/Lang-54/FSL/LocaleUtilsTest.java",
     "class_name": "LocaleUtilsTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "104fbaf159d309c4dca09c432f685fc22c541484a781d0ba04ebccef710763b5",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.306
   },
   {
     "bug_id": "54",
@@ -1077,10 +1152,15 @@
     "materialized": true,
     "file": "generated/Lang-55/FSL/StopWatchTest.java",
     "class_name": "StopWatchTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "73124b5754ec39917485d4e58deea27ac0907ba4aea3835631ff537e809b8060",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.293
   },
   {
     "bug_id": "55",
@@ -1137,10 +1217,15 @@
     "materialized": true,
     "file": "generated/Lang-55/GToT/StopWatchTest.java",
     "class_name": "StopWatchTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "d67968cd76ab3bf323123f6d723f15bb722e9ffe3552cda511e3aeab2b690940",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.265
   },
   {
     "bug_id": "57",
@@ -1269,10 +1354,15 @@
     "materialized": true,
     "file": "generated/Lang-64/FSL/ValuedEnumTest.java",
     "class_name": "ValuedEnumTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "188c8f482cd0ac686a90f2ff6d256e9ceb6937a4438955a3a428fa7d4ce21a7a",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.269
   },
   {
     "bug_id": "64",
@@ -1311,10 +1401,15 @@
     "materialized": true,
     "file": "generated/Lang-64/ToT/ValuedEnumTest.java",
     "class_name": "ValuedEnumTest",
-    "status": "compile",
+    "status": "run-error",
     "extracted_sha256": "1af0e0bbe43177e7af20d15a5f617bbc0ec21b25213167ed3e765d45e2008d7e",
     "syntax_ok": true,
-    "syntax_error": ""
+    "syntax_error": "",
+    "compile_ok": true,
+    "compile_exit_status": 0,
+    "compile_error_count": 0,
+    "compile_categories": {},
+    "compile_seconds": 0.277
   },
   {
     "bug_id": "64",
