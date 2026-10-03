@@ -53,6 +53,12 @@ def main():
         '- The existing image and author copies were reused after validation. Evaluation JARs and compiled runner bytecode remain ignored; source, version metadata, prompts, exports, and logs are committed.', '',
         '## Resume', '',
         ('Await Gary’s confirmation before Step 7. No push was performed.' if completed else 'Supply OPENROUTER_API_KEY in the terminal environment used to launch Docker Compose. Do not paste the key into a commit or handover. From docker/, run docker compose run --rm d4j bash -c \'python3 scripts/probe_model.py\'. Then regenerate this handover with scripts/part1_handover.py, commit the probe artifacts and updated handover, and stop for Gary’s review before Step 7. No push was performed.'), '']
+    preflight = Path('results/probe-preflight.json')
+    if preflight.exists() and not completed:
+        check = json.loads(preflight.read_text())
+        lines += ['## Latest Step 6 attempt', '',
+            f'Attempt recorded at {check["timestamp_utc"]}. The user reported setting the key in the launching environment, but scripts/probe_model.py still found it absent or empty inside the container. A presence-only check with shell login disabled also found it absent or empty in the command environment. No key value was printed, no API request was made, and no model was selected. Evidence: results/probe-preflight.json.', '',
+            'The key must be exported into the environment actually inherited by the agent’s commands, or the probe can be run directly from a terminal that has the exported variable. An unexported shell variable is not passed to Docker Compose. Stop for review; Step 7 remains unstarted.', '']
     Path('docs/handover-part1-a.md').write_text('\n'.join(lines))
     print('Wrote docs/handover-part1-a.md')
 
