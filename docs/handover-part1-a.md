@@ -1,6 +1,6 @@
 # Part 1 handover A
 
-Steps 1–5 completed. Step 6 stopped before any API request because OPENROUTER_API_KEY is absent or empty inside the container. Model availability, selection, and probe are pending. Do not start Step 7: this document requires Gary’s confirmation after the completed Step 6 probe.
+Steps 1–5 completed. Step 6 reached OpenRouter successfully but stopped because no Mistral 7B Instruct model is listed. No generation was attempted. Stop for Gary’s review before selecting a replacement or starting Step 7.
 
 ## Environment
 
@@ -14,7 +14,7 @@ Steps 1–5 completed. Step 6 stopped before any API request because OPENROUTER_
 | javalang | 0.13.0 |
 | Evaluation tools | JUnit 4.13.2; Hamcrest core 1.3; JaCoCo 0.8.8 |
 | Docker | Existing image reused; Compose memory limit 12 GB |
-| API key | Absent or empty inside container; value never displayed or saved |
+| API key | Present; confirmed inside container; value never displayed or saved |
 
 Existing Docker configuration passed the required Defects4J, Java and Python checks. JsonRunner compiled. JUnit reported version 4.13.2 and the JaCoCo CLI help command succeeded. Download URLs and SHA-256s are in tools/VERSIONS.md. Docker Desktop’s global memory setting was not inspected; the service limit is 12 GB.
 
@@ -63,9 +63,11 @@ Template checks passed: ZSL contains no fewshot_example placeholder; FSL contain
 
 # Model probe
 
-Stopped: OPENROUTER_API_KEY is absent or empty inside the container. No API request made.
+Stopped: no identifiable Mistral 7B Instruct version is listed.
 
-No model-list request or generation call was made, no probe response exists, and API cost incurred in this session is zero. HTTP status, finish_reason, completion tokens, provider, marker presence and first ten completion lines are unavailable until the probe succeeds.
+Matching IDs: []
+
+One model-list request succeeded (HTTP 200, 466 listed models, zero matching Mistral 7B IDs). No generation request was made and no probe response exists. Generation cost is zero; completion status, finish_reason, tokens, provider, markers and first ten lines are unavailable.
 
 ## Unexpected findings and mechanical fixes
 
@@ -73,13 +75,14 @@ No model-list request or generation call was made, no probe response exists, and
 - One Docker invocation from the repository root was denied access to the Docker socket by the command sandbox. It was rerun with the required escalation and succeeded; no experiment parameters changed.
 - A temporary-script creation tool call had a JavaScript quoting error before execution. It was corrected using apply_patch; no API call or experiment output was affected.
 - The existing image and author copies were reused after validation. Evaluation JARs and compiled runner bytecode remain ignored; source, version metadata, prompts, exports, and logs are committed.
+- User-provided configuration now supplies container credentials through docker/.env via Compose env_file. docker/.env is gitignored; its contents were not inspected or committed. The container presence check passed.
 
 ## Resume
 
-Supply OPENROUTER_API_KEY in the terminal environment used to launch Docker Compose. Do not paste the key into a commit or handover. From docker/, run docker compose run --rm d4j bash -c 'python3 scripts/probe_model.py'. Then regenerate this handover with scripts/part1_handover.py, commit the probe artifacts and updated handover, and stop for Gary’s review before Step 7. No push was performed.
+Await Gary’s review of unavailable Mistral 7B models. A replacement model or another provider requires an explicit experiment decision. No push was performed.
 
 ## Latest Step 6 attempt
 
-Attempt recorded at 2026-10-03T05:10:08.346359+00:00. The user reported setting the key in the launching environment, but scripts/probe_model.py still found it absent or empty inside the container. A presence-only check with shell login disabled also found it absent or empty in the command environment. No key value was printed, no API request was made, and no model was selected. Evidence: results/probe-preflight.json.
+Attempt recorded at 2026-10-03T05:15:56.341511+00:00. OpenRouter model list contains no Mistral 7B Instruct model; no model chosen and no generation attempted. Evidence: results/probe-preflight.json.
 
-The key must be exported into the environment actually inherited by the agent’s commands, or the probe can be run directly from a terminal that has the exported variable. An unexported shell variable is not passed to Docker Compose. Stop for review; Step 7 remains unstarted.
+The key value was never printed or saved. Step 7 remains unstarted.

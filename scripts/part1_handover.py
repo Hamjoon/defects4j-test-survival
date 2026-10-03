@@ -10,7 +10,13 @@ def main():
     selection_path = Path('results/model-selection.json')
     completed = selection_path.exists()
     selection = json.loads(selection_path.read_text()) if completed else None
+    preflight_path = Path('results/probe-preflight.json')
+    check = json.loads(preflight_path.read_text()) if preflight_path.exists() else {}
+    key_present = completed or check.get('container_key_present', False)
+    models_blocked = not completed and key_present and check.get('model_list_status') == 200
     summary = ('Steps 1–6 completed. Stop for Gary’s confirmation before Step 7.' if completed else 'Steps 1–5 completed. Step 6 stopped before any API request because OPENROUTER_API_KEY is absent or empty inside the container. Model availability, selection, and probe are pending. Do not start Step 7: this document requires Gary’s confirmation after the completed Step 6 probe.')
+    if models_blocked:
+        summary = 'Steps 1–5 completed. Step 6 reached OpenRouter successfully but stopped because no Mistral 7B Instruct model is listed. No generation was attempted. Stop for Gary’s review before selecting a replacement or starting Step 7.'
     lines = ['# Part 1 handover A', '',
         summary, '',
         '## Environment', '', '| Component | Version / status |', '|---|---|',
@@ -22,7 +28,7 @@ def main():
         f'| javalang | {env["packages"]["javalang"]} |',
         '| Evaluation tools | JUnit 4.13.2; Hamcrest core 1.3; JaCoCo 0.8.8 |',
         '| Docker | Existing image reused; Compose memory limit 12 GB |',
-        '| API key | ' + ('Present during successful probe' if completed else 'Absent or empty inside container') + '; value never displayed or saved |', '',
+        '| API key | ' + ('Present; confirmed inside container' if key_present else 'Absent or empty inside container') + '; value never displayed or saved |', '',
         'Existing Docker configuration passed the required Defects4J, Java and Python checks. JsonRunner compiled. JUnit reported version 4.13.2 and the JaCoCo CLI help command succeeded. Download URLs and SHA-256s are in tools/VERSIONS.md. Docker Desktop’s global memory setting was not inspected; the service limit is 12 GB.', '',
         '## Step 1: bundle', '',
         'All seven requested copied files/directories are identical to the original bundle (recursive diff). Dataset contains 477 records, including 14 Lang records and 9 distinct classes. Existing ORIGIN.md matches the required provenance. The original bundle was not modified. See results/part1-bundle-check.json.', '',
@@ -45,20 +51,19 @@ def main():
     lines += ['', 'All four checked techniques match the pre-check: 428 exact and 49 positive differences of +1..+8. Every record has the same difference across ZSL/FSL/CoT/ToT. No negative difference, cross-technique discrepancy, or token-check stop condition occurred. GToT has no author token count.', '',
         'Template checks passed: ZSL contains no fewshot_example placeholder; FSL contains it exactly once and begins with the specified professional tester/examples sentence; the few-shot example starts with a newline followed by //Example Java Class:. AST extraction only accepts the three specified expressions. SHA-256s and tokenizer version are recorded in prompts/manifest.json and results/template-check.json.', '',
         '## Step 6: probe', '', probe.strip(), '',
-        ('Probe artifacts are saved under ' + selection['probe_directory'] + '; see usage.json for reported cost.' if completed else 'No model-list request or generation call was made, no probe response exists, and API cost incurred in this session is zero. HTTP status, finish_reason, completion tokens, provider, marker presence and first ten completion lines are unavailable until the probe succeeds.'), '',
+        ('Probe artifacts are saved under ' + selection['probe_directory'] + '; see usage.json for reported cost.' if completed else 'One model-list request succeeded (HTTP 200, 466 listed models, zero matching Mistral 7B IDs). No generation request was made and no probe response exists. Generation cost is zero; completion status, finish_reason, tokens, provider, markers and first ten lines are unavailable.' if models_blocked else 'No model-list request or generation call was made, no probe response exists, and API cost incurred in this session is zero. HTTP status, finish_reason, completion tokens, provider, marker presence and first ten completion lines are unavailable until the probe succeeds.'), '',
         '## Unexpected findings and mechanical fixes', '',
         '- Expected comment-only differences were found in Lang-64b, as detailed above.',
         '- One Docker invocation from the repository root was denied access to the Docker socket by the command sandbox. It was rerun with the required escalation and succeeded; no experiment parameters changed.',
         '- A temporary-script creation tool call had a JavaScript quoting error before execution. It was corrected using apply_patch; no API call or experiment output was affected.',
-        '- The existing image and author copies were reused after validation. Evaluation JARs and compiled runner bytecode remain ignored; source, version metadata, prompts, exports, and logs are committed.', '',
+        '- The existing image and author copies were reused after validation. Evaluation JARs and compiled runner bytecode remain ignored; source, version metadata, prompts, exports, and logs are committed.',
+        '- User-provided configuration now supplies container credentials through docker/.env via Compose env_file. docker/.env is gitignored; its contents were not inspected or committed. The container presence check passed.', '',
         '## Resume', '',
-        ('Await Gary’s confirmation before Step 7. No push was performed.' if completed else 'Supply OPENROUTER_API_KEY in the terminal environment used to launch Docker Compose. Do not paste the key into a commit or handover. From docker/, run docker compose run --rm d4j bash -c \'python3 scripts/probe_model.py\'. Then regenerate this handover with scripts/part1_handover.py, commit the probe artifacts and updated handover, and stop for Gary’s review before Step 7. No push was performed.'), '']
-    preflight = Path('results/probe-preflight.json')
-    if preflight.exists() and not completed:
-        check = json.loads(preflight.read_text())
+        ('Await Gary’s confirmation before Step 7. No push was performed.' if completed else 'Await Gary’s review of unavailable Mistral 7B models. A replacement model or another provider requires an explicit experiment decision. No push was performed.' if models_blocked else 'Supply OPENROUTER_API_KEY in the terminal environment used to launch Docker Compose. Do not paste the key into a commit or handover. From docker/, run docker compose run --rm d4j bash -c \'python3 scripts/probe_model.py\'. Then regenerate this handover with scripts/part1_handover.py, commit the probe artifacts and updated handover, and stop for Gary’s review before Step 7. No push was performed.'), '']
+    if check and not completed:
         lines += ['## Latest Step 6 attempt', '',
-            f'Attempt recorded at {check["timestamp_utc"]}. The user reported setting the key in the launching environment, but scripts/probe_model.py still found it absent or empty inside the container. A presence-only check with shell login disabled also found it absent or empty in the command environment. No key value was printed, no API request was made, and no model was selected. Evidence: results/probe-preflight.json.', '',
-            'The key must be exported into the environment actually inherited by the agent’s commands, or the probe can be run directly from a terminal that has the exported variable. An unexported shell variable is not passed to Docker Compose. Stop for review; Step 7 remains unstarted.', '']
+            f'Attempt recorded at {check["timestamp_utc"]}. {check["reason"]} Evidence: results/probe-preflight.json.', '',
+            'The key value was never printed or saved. Step 7 remains unstarted.', '']
     Path('docs/handover-part1-a.md').write_text('\n'.join(lines))
     print('Wrote docs/handover-part1-a.md')
 

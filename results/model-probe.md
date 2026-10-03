@@ -1,3 +1,5 @@
 # Model probe
 
-Stopped: OPENROUTER_API_KEY is absent or empty inside the container. No API request made.
+Stopped: no identifiable Mistral 7B Instruct version is listed.
+
+Matching IDs: []
