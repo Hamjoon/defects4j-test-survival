@@ -1220,6 +1220,31 @@ Fixed versions are placed in bin 0 by specification. Later buggy versions use th
 | 2438.352060185 | dev-own | — | — | 18 | N/A | N/A | 0 | 0 | 0 | 0 | 0 | 18 |
 | 2438.352060185 | llm | 99 | 2 | 97 | N/A | N/A | 0 | 0 | 0 | 0 | 0 | 97 |
 
+### Pooled by day range
+
+Bin 0 contains fixed-version rows regardless of their actual gap. For all other time points, the labels 1-30, 31-180, 181-365, 366-730 and 731+ use exact day-gap intervals (0,30], (30,180], (180,365], (365,730] and (730,infinity), respectively. No day gap is rounded: a positive sub-day gap belongs to 1-30. Each method/timepoint row contributes once; absent rows are reported beside the present-population denominator. Raw LLM and removed-duplicate counts are summed once per included record/timepoint.
+
+| Days bin | Population | Raw LLM | Removed duplicates | Population (unique for LLM) | Pass / present population | Survival | fail | error | timeout | not-run | compile-fail | absent |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | dev | — | — | 703 | 703 / 703 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | dev-own | — | — | 95 | 95 / 95 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0 | llm | 1509 | 156 | 1353 | 1331 / 1353 | 98.37% | 21 | 1 | 0 | 0 | 0 | 0 |
+| 1-30 | dev | — | — | 38 | 38 / 38 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 1-30 | dev-own | — | — | 9 | 9 / 9 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 1-30 | llm | 140 | 6 | 134 | 125 / 134 | 93.28% | 9 | 0 | 0 | 0 | 0 | 0 |
+| 31-180 | dev | — | — | 879 | 838 / 879 | 95.34% | 0 | 0 | 0 | 0 | 41 | 0 |
+| 31-180 | dev-own | — | — | 117 | 117 / 117 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 31-180 | llm | 1791 | 231 | 1560 | 1553 / 1560 | 99.55% | 7 | 0 | 0 | 0 | 0 | 0 |
+| 181-365 | dev | — | — | 746 | 639 / 746 | 85.66% | 6 | 0 | 0 | 4 | 97 | 0 |
+| 181-365 | dev-own | — | — | 103 | 103 / 103 | 100.00% | 0 | 0 | 0 | 0 | 0 | 0 |
+| 181-365 | llm | 1353 | 144 | 1209 | 1179 / 1209 | 97.52% | 27 | 3 | 0 | 0 | 0 | 0 |
+| 366-730 | dev | — | — | 546 | 504 / 540 | 93.33% | 6 | 0 | 0 | 2 | 28 | 6 |
+| 366-730 | dev-own | — | — | 48 | 42 / 42 | 100.00% | 0 | 0 | 0 | 0 | 0 | 6 |
+| 366-730 | llm | 1213 | 103 | 1110 | 1009 / 1072 | 94.12% | 62 | 1 | 0 | 0 | 0 | 38 |
+| 731+ | dev | — | — | 989 | 90 / 131 | 68.70% | 0 | 0 | 0 | 0 | 41 | 858 |
+| 731+ | dev-own | — | — | 372 | 18 / 18 | 100.00% | 0 | 0 | 0 | 0 | 0 | 354 |
+| 731+ | llm | 4006 | 470 | 3536 | 256 / 280 | 91.43% | 24 | 0 | 0 | 0 | 0 | 3256 |
+
 ## Failure kinds
 
 Each cell counts affected population methods. Compile categories may overlap for a method when its file has multiple diagnostic categories. The last column gives raw javac diagnostic counts, counted once per failed file within that population. Codes follow Part 1: CFS cannot find symbol; PDNE package missing; PAI private access; IT incompatible types; CAM/MAM constructor/method arguments; DCD duplicate class; PCR public-class filename; SCI instance member from static context; UE unreported exception; VNI uninitialized variable; WAP weaker access; AR ambiguous reference; USL/UCL unclosed literal; other unmatched diagnostics.

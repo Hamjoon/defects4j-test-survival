@@ -9,6 +9,16 @@ from survival import STATUSES
 from extract_v2 import TECHS
 
 POPS=['dev','dev-own','llm']
+DAY_RANGES=[('1-30',30),('31-180',180),('181-365',365),('366-730',730),('731+',None)]
+
+
+def day_range(step,days):
+    if step==1:
+        return '0'
+    assert days>0, 'Later buggy versions must have a positive exact day gap'
+    for label,upper in DAY_RANGES:
+        if upper is None or days<=upper:
+            return label
 
 
 def read_rows():
@@ -79,6 +89,15 @@ def main():
         for key,p in points.items(): groups[p[field]].append(key)
         return [dict(**{field:value},**metric(keys,pop)) for value,keys in sorted(groups.items()) for pop in POPS]
     pooled_step,pooled_days=grouped('step'),grouped('days_bin')
+    range_groups={label:[] for label in ['0',*[label for label,_ in DAY_RANGES]]}
+    for key,p in points.items():
+        range_groups[day_range(p['step'],p['days_after_t'])].append(key)
+    pooled_day_bins=[]
+    for label,keys in range_groups.items():
+        for pop in POPS:
+            m=metric(keys,pop)
+            pooled_day_bins.append(dict(day_bin=label,**m,
+                survival_percent=None if m['survival'] is None else 100*m['survival']))
     per_record_days=[]
     groups=defaultdict(list)
     for key,p in points.items():groups[(key[0],p['days_bin'])].append(key)
@@ -131,11 +150,12 @@ def main():
         llm_context_columns='raw passing and duplicates removed before survival; repeated once per included record/timepoint in pooled rows',
         absent='excluded from denominator; included in population_total and absent column',
         days='fixed points grouped at 0; other points use exact elapsed 24-hour days rounded to 9 decimals from timeline',
+        day_ranges='0 = fixed version regardless of actual gap; nonfixed exact gaps use (0,30], (30,180], (180,365], (365,730], (730,infinity); no rounding',
         dev_own='filter dev rows where own_class is true',
         compile_categories='affected method counts (may overlap); separate raw diagnostic counts per failed file',
         class_2x2='only present CUT pairs with nonempty populations; every status except pass is nonpass'),
         survival_by_record=per_record,survival_pooled_step=pooled_step,survival_by_record_days=per_record_days,
-        survival_pooled_days=pooled_days,fixed_classification=fixed,class_2x2=two_by_two,
+        survival_pooled_days=pooled_days,survival_pooled_day_bins=pooled_day_bins,fixed_classification=fixed,class_2x2=two_by_two,
         class_pairs=pairs,class_pairs_excluded=excluded,dev_all_llm_nonpass=disagreements,
         per_technique=techniques,counts_matched=population['records'],coverage_rerun_status_changes=coverage_changes,
         step7_patch_lines=load('results/p2-approved-policy.json')['step7_patch_lines'])
@@ -163,6 +183,12 @@ def main():
         out += [f'### Lang-{bug}','',*table(['Days bin','Time points',*metric_headers],
             [[r['days_bin'],', '.join(r['timepoints']),*values(r)] for r in group]),'']
     out+=['### Pooled by days','',*table(['Days bin',*metric_headers],[[r['days_bin'],*values(r)] for r in pooled_days]),'']
+    out+=['### Pooled by day range','',
+        'Bin 0 contains fixed-version rows regardless of their actual gap. For all other time points, the labels 1-30, 31-180, '
+        '181-365, 366-730 and 731+ use exact day-gap intervals (0,30], (30,180], (180,365], (365,730] and (730,infinity), respectively. '
+        'No day gap is rounded: a positive sub-day gap belongs to 1-30. Each method/timepoint row contributes once; '
+        'absent rows are reported beside the present-population denominator. Raw LLM and removed-duplicate counts are summed once per included record/timepoint.','',
+        *table(['Days bin',*metric_headers],[[r['day_bin'],*values(r)] for r in pooled_day_bins]),'']
     out+=['## Failure kinds','',
         'Each cell counts affected population methods. Compile categories may overlap for a method when its file has multiple diagnostic categories. '
         'The last column gives raw javac diagnostic counts, counted once per failed file within that population. '
