@@ -6,3 +6,5 @@ __pycache__/
 tools/runner/*.class
 docker/.env
 generated/**/classes/
+devtests/**/classes-t/
+survival/**/classes/

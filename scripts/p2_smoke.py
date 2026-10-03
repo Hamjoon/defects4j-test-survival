@@ -18,6 +18,8 @@ def main():
     assert not extract('###Test START##\ninvalid\n###Test END##\n```java\n' + source + '```')['csr_v2']
     assert not extract('```java\n' + source + '<html>\n```')['csr_v2']
     assert not extract('```java\n' + source + '}\n```')['csr_v2']
+    truncated = extract('```java\nimport org.junit.Test; public class T { @Test')
+    assert truncated['msr_detected'] and not truncated['csr_v2'] and not truncated['combine_v2']
     subprocess.run(['javac', '-cp', 'tools/junit-4.13.2.jar', '-d', 'tools/runner', 'tools/runner/JsonRunner.java'], check=True)
     results = {}
     with tempfile.TemporaryDirectory(prefix='p2-runner-') as tmp:

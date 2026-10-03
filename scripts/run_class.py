@@ -7,10 +7,10 @@ import subprocess
 import time
 
 
-def invoke(command, timeout):
+def invoke(command, timeout, cwd=None):
     start = time.monotonic()
     try:
-        result = subprocess.run(command, capture_output=True, text=True, errors='replace', timeout=timeout)
+        result = subprocess.run(command, capture_output=True, text=True, errors='replace', timeout=timeout, cwd=cwd)
         out, err, code = result.stdout, result.stderr, result.returncode
     except subprocess.TimeoutExpired as exc:
         def decode(value):
@@ -32,12 +32,15 @@ def events(text):
     return result
 
 
-def run_class(fqcn, classpath, output, timeout_ms=30000, java_options=()):
+def run_class(fqcn, classpath, output, timeout_ms=30000, java_options=(), working_directory=None):
     start = time.monotonic()
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
+    cwd = str(Path(working_directory).resolve()) if working_directory is not None else str(Path.cwd())
+    if working_directory is not None:
+        classpath = ':'.join(str(Path(entry).resolve()) for entry in classpath.split(':'))
     base = ['java', *java_options, '-cp', classpath, 'JsonRunner', fqcn]
-    listing = invoke(base + ['--list'], 60)
+    listing = invoke(base + ['--list'], 60, cwd)
     methods = [event['method'] for event in events(listing['stdout'])]
     if len(methods) != len(set(methods)):
         raise RuntimeError('Duplicate JUnit method identities: ' + fqcn)
@@ -51,7 +54,7 @@ def run_class(fqcn, classpath, output, timeout_ms=30000, java_options=()):
             if completed:
                 command += ['--exclude', ','.join(completed)]
             remaining = len(methods) - len(completed)
-            result = invoke(command, remaining * (timeout_ms / 1000 + 5) + 60)
+            result = invoke(command, remaining * (timeout_ms / 1000 + 5) + 60, cwd)
             result['launch'] = launch
             launches.append(result)
             current = []
@@ -75,7 +78,7 @@ def run_class(fqcn, classpath, output, timeout_ms=30000, java_options=()):
             break
     measured = [completed[name] for name in methods if name in completed]
     output.write_text(''.join(json.dumps(row, ensure_ascii=False) + '\n' for row in measured))
-    summary = dict(fqcn=fqcn, classpath=classpath, timeout_ms=timeout_ms, listed_methods=methods,
+    summary = dict(fqcn=fqcn, classpath=classpath, cwd=cwd, timeout_ms=timeout_ms, listed_methods=methods,
                    listing=listing, list_error=list_error, launches=launches,
                    methods=measured, counts=dict(Counter(row['status'] for row in measured)),
                    wall_seconds=round(time.monotonic() - start, 3))
@@ -91,6 +94,7 @@ if __name__ == '__main__':
     parser.add_argument('--classpath', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--timeout-ms', type=int, default=30000)
+    parser.add_argument('--cwd', help='Checkout working directory for relative test resources')
     args = parser.parse_args()
-    summary = run_class(args.fqcn, args.classpath, args.output, args.timeout_ms)
+    summary = run_class(args.fqcn, args.classpath, args.output, args.timeout_ms, working_directory=args.cwd)
     print(json.dumps(dict(fqcn=args.fqcn, counts=summary['counts'], launches=len(summary['launches']))))

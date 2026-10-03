@@ -93,7 +93,10 @@ def extract(text, csr_success=None):
     pkg = package[1] if package else ''
     junit = '@Test' in combined or 'import org.junit' in combined
     html = bool(re.search(r'<(?:html|body|div|script)\b', comments, re.I))
-    return dict(msr_detected=bool(combined.strip()), csr_v2=bool(name and junit and balanced and not html),
+    # A truncated response can visibly contain code without a complete extractable block.
+    detected = bool(combined.strip()) or bool(re.search(r'\bclass\s+\w+', text) and
+                                              ('@Test' in text or 'import org.junit' in text))
+    return dict(msr_detected=detected, csr_v2=bool(name and junit and balanced and not html),
                 combine_v2=combined, class_name=class_name, package=pkg,
                 fqcn=(pkg + '.' if pkg else '') + class_name if class_name else None,
                 csr_success=csr_success, selection=source, marker_pair=paired,
