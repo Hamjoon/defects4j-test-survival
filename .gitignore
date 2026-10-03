@@ -3,3 +3,4 @@ tools/*.jar
 tools/*.zip
 .DS_Store
 __pycache__/
+tools/runner/*.class
