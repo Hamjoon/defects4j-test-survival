@@ -71,5 +71,7 @@
   "step8_llm_counts": "report raw passing, exact duplicates removed, and unique population together",
   "step5b_initial_short_records": [
     13
-  ]
+  ],
+  "step7_patch_lines": "actual fixed-version lines",
+  "step7_orientation_deviation": "The original document assumed buggy-to-fixed orientation; the Defects4J patches are fixed-to-buggy."
 }

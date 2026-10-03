@@ -43,6 +43,9 @@ def main():
     timeline=load('results/p2-timeline.json')
     files=load('results/p2-survival-files.json')['files']
     classified=load('results/p2-fixed-classification.json')['methods']
+    coverage_changes=[dict(r,raw_llm=records[r['bug_id']]['L_r'],
+        duplicates_removed=records[r['bug_id']]['duplicates_removed'],
+        unique_llm=records[r['bug_id']]['L_r_unique']) for r in classified if r['coverage_status']!=r['status_at_f']]
     points={(r['bug_id'],p['id']):dict(p,bug_id=r['bug_id'],days_bin=0.0 if p['step']==1 else p['days_after_t'])
             for r in timeline['records'] for p in r['timepoints']}
     bypoint=defaultdict(list)
@@ -134,7 +137,8 @@ def main():
         survival_by_record=per_record,survival_pooled_step=pooled_step,survival_by_record_days=per_record_days,
         survival_pooled_days=pooled_days,fixed_classification=fixed,class_2x2=two_by_two,
         class_pairs=pairs,class_pairs_excluded=excluded,dev_all_llm_nonpass=disagreements,
-        per_technique=techniques,counts_matched=population['records'])
+        per_technique=techniques,counts_matched=population['records'],coverage_rerun_status_changes=coverage_changes,
+        step7_patch_lines=load('results/p2-approved-policy.json')['step7_patch_lines'])
     out=['# Part 2 survival summary','',
         'The LLM population consists of unique methods that passed at t. Every LLM row shows raw passing methods and exact duplicates removed before survival. '
         'Dev-own filters the existing developer rows. Empty populations are N/A. Absent methods are excluded from survival denominators and reported separately. '
@@ -174,9 +178,17 @@ def main():
         '### Pooled failure kinds by step','']+table(['Step',*headers],[[r['step'],*kinds(r)] for r in pooled_step])+['']
     out+=['## Fixed-version classification','',
         'Only nonpassing methods at the fixed version are classified; compile failures are excluded. '
-        'Coverage intersection is an operational classification, not a causal finding. Developer and dev-own results are included for reference.','',
+        'Coverage intersection is an operational classification, not a causal finding. Developer and dev-own results are included for reference. '
+        'Patched lines are changed + lines after reversing the original fixed-to-buggy Defects4J patches and verifying both sides against the checkouts.','',
         *table(['Record','Population','Raw LLM','Removed duplicates','Population (unique for LLM)','Eligible nonpasses','Patch-related','Unrelated','Excluded compile-fail'],
             [[r['record'],r['population'],r['raw_llm'],r['duplicates_removed'],r['population_total'],r['eligible_failures'],r['patch_related'],r['unrelated'],r['compile-fail']] for r in fixed]),'']
+    out+=['### Status changes during the isolated coverage run','',
+        'Step 7 selects methods using the saved Step 6 outcomes. A coverage rerun does not replace those outcomes. '
+        'The following method passed in its isolated JaCoCo run after failing in Step 6; it still intersects a patched line under the specified classification rule. '
+        'The method contains short sleeps and assertions on their measured durations. The available evidence does not establish why its status changed.','',
+        *table(['Record','Technique','Method','LLM raw at t','Removed duplicates','LLM unique at t','Step 6 status','Coverage status','Intersecting fixed lines'],
+        [[f'Lang-{r["bug_id"]}',r['technique'],r['method'],r['raw_llm'],r['duplicates_removed'],r['unique_llm'],r['status_at_f'],r['coverage_status'],
+          ', '.join(map(str,r['intersecting_lines']))] for r in coverage_changes]),'']
     out+=['## Class-level 2×2','',
         'A pair is one record/timepoint with a present CUT and nonempty baselines. “Some nonpass” includes fail, error, timeout, not-run and compile-fail. '
         'The LLM context columns sum method populations across eligible pairs.','',
@@ -196,7 +208,7 @@ def main():
         [[f'Lang-{r["bug_id"]}',r['D_r'],r['D_r_own'],r['L_r'],r['duplicates_removed'],r['L_r_unique'],r['rounds_used'],r['target_reached']] for r in records.values()]),'']
     result['wall_seconds']=round(time.monotonic()-started,3)
     save('results/p2-survival-matrix.json',result)
-    Path('results/p2-survival-summary.md').write_text('\n'.join(out)+'\n')
+    Path('results/p2-survival-summary.md').write_text('\n'.join(out).rstrip()+'\n')
     print(json.dumps(dict(class_2x2=two_by_two,fixed_pooled=[r for r in fixed if r['bug_id'] is None],wall_seconds=result['wall_seconds']),indent=2))
 
 

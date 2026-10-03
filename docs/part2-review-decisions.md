@@ -48,6 +48,12 @@ Every Step 8 count of the LLM population must expose the raw passing population 
 
 A later checkout can remove an inherited developer method from JUnit's listing even though the unchanged copied subclass still compiles. The method remains in the frozen population and receives `not-run` with `JUnitMethodMissing`; other listed population methods still run. An initial wrapper incorrectly made this a class-wide `not-run`. Six affected run artifacts (two classes at each of Lang-6b, Lang-5b and Lang-4b for the Lang-13 record) are archived under results/archive/step6-inherited-listing and were replaced by corrected measurements. This is a mechanical runner correction, not a source or population change.
 
-## Pending Step 7 contradiction
+## Step 7 patch-line decision — approved 2026-10-03
 
-The original document says to take fixed-version changed lines from the patch's `+` side. All 14 saved Defects4J source patches actually run from fixed to buggy: their `-` side matches the fixed checkout and their `+` side matches the buggy checkout. See results/p2-patch-audit/audit.json. The proposed correction is to reverse each patch for analysis, verify the reversed sides against both checkouts, then take the reversed `+` lines (with deletion-only hunk positions mapped as specified). The user was asked to choose this correction or literal original `+` lines. No Step 7 classification is authorized under a chosen mapping until that answer arrives; the classification script checks for the explicit decision.
+`step7_patch_lines = "actual fixed-version lines"`.
+
+The original document assumed buggy-to-fixed orientation; the Defects4J patches are fixed-to-buggy.
+
+Gary approved reversing each Defects4J patch so that its `+` side is the fixed version. Verify the reversed old side against Lang-<B>b and the reversed new side against Lang-<B>f, and retain both the original and reversed-patch evidence under results/p2-patch-audit/. Take changed `+` lines from the reversed patch as the patched-line set; deletion-only hunks map to their position line as specified. This corrects the line coordinate system without changing any test or production source. List this orientation correction as a deviation in handover-part2-c.md.
+
+The previous Step 7 review stop is resolved. Run Steps 7, 8 and 9, commit docs/handover-part2-c.md, and stop without pushing. The historical review evidence remains in docs/part2-step7-review.md.

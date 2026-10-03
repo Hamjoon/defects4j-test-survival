@@ -37,31 +37,37 @@ def reverse_patch(text):
 def main():
     started=time.monotonic()
     policy=load('results/p2-approved-policy.json')
-    assert policy.get('step7_patch_lines') in {'actual fixed-version lines','literal original plus side'}, 'Patch-direction review decision required'
+    assert policy.get('step7_patch_lines') == 'actual fixed-version lines', 'Approved fixed-version mapping required'
     assert load('results/p2-survival-progress.json')['complete']
     rows=read_rows()
     candidates=[r for r in rows if r['step']==1 and r['status'] not in {'pass','compile-fail','absent'}]
     records={r['bug_id']:r for r in load('results/lang-records.json')}
     timeline=load('results/p2-timeline.json')
     audits={r['bug_id']:r for r in load('results/p2-patch-audit/audit.json')['records']}
-    patchsets={}
+    patchsets={}; reversed_audits=[]
     for bug,record in records.items():
         audit=audits[bug]
         assert audit['orientation']=='fixed-to-buggy'
+        assert sha(audit['patch']) == audit['sha256']
         original=Path(audit['patch']).read_text()
-        if policy['step7_patch_lines']=='actual fixed-version lines':
-            patch=reverse_patch(original)
-            path=Path('results/p2-patch-audit')/f'{bug}.buggy-to-fixed.patch'
-            path.write_text(patch)
-            files=parse_patch(patch)
-            assert all(matches(f,Path('d4j')/f'Lang-{bug}f','new') for f in files)
-        else:
-            patch=original;files=parse_patch(patch)
+        patch=reverse_patch(original)
+        path=Path('results/p2-patch-audit')/f'{bug}.buggy-to-fixed.patch'
+        if path.exists(): assert path.read_text()==patch
+        else: path.write_text(patch)
+        files=parse_patch(patch)
+        comparisons=[dict(old_path=f['old_path'],new_path=f['new_path'],
+            old_matches_buggy=matches(f,Path('d4j')/f'Lang-{bug}b','old'),
+            new_matches_fixed=matches(f,Path('d4j')/f'Lang-{bug}f','new')) for f in files]
+        assert all(f['old_matches_buggy'] and f['new_matches_fixed'] for f in comparisons)
+        reversed_audits.append(dict(bug_id=bug,original_patch=audit['patch'],original_sha256=audit['sha256'],
+            reversed_patch=str(path),reversed_sha256=sha(path),orientation='buggy-to-fixed',files=comparisons))
         suffix=record['package'].replace('.','/')+'/'+record['class']+'.java'
         cut=[f for f in files if f['new_path'].endswith(suffix)]
         assert len(cut)==1
         patchsets[bug]=dict(source_path=cut[0]['new_path'],lines=changed_lines(cut[0],'new'),rule=policy['step7_patch_lines'])
     save('results/p2-fixed-patched-lines.json',patchsets)
+    save('results/p2-patch-audit/reversed-audit.json',dict(complete=True,records=reversed_audits,
+        step7_patch_lines=policy['step7_patch_lines'],deletion_only_rule='first deletion position in fixed-version coordinates'))
     methods=[]
     for index,row in enumerate(candidates,1):
         bug=row['bug_id'];record=records[bug];point=f'Lang-{bug}f'
