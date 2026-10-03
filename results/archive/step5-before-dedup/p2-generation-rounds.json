@@ -27,9 +27,7 @@
       "cumulative_cost_usd": 0.004744567,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.004744567,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 53,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 5,
@@ -53,9 +51,7 @@
       "cumulative_cost_usd": 0.004584844,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.009329411,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 100,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 6,
@@ -79,9 +75,7 @@
       "cumulative_cost_usd": 0.004786529,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.01411594,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 57,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 11,
@@ -105,9 +99,7 @@
       "cumulative_cost_usd": 0.004953136,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.019069076,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 92,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 12,
@@ -131,9 +123,7 @@
       "cumulative_cost_usd": 0.006819356,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.025888432,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 81,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 13,
@@ -157,9 +147,7 @@
       "cumulative_cost_usd": 0.003855786,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.029744218,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 38,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 17,
@@ -183,9 +171,7 @@
       "cumulative_cost_usd": 0.00522942,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.034973638,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 49,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 19,
@@ -209,9 +195,7 @@
       "cumulative_cost_usd": 0.003137975,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.038111613,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 53,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 28,
@@ -235,9 +219,7 @@
       "cumulative_cost_usd": 0.002865714,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.040977327,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 61,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 43,
@@ -261,9 +243,7 @@
       "cumulative_cost_usd": 0.004560067,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.045537394,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 38,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 54,
@@ -287,9 +267,7 @@
       "cumulative_cost_usd": 0.004366494,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.049903888,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 62,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 55,
@@ -313,9 +291,7 @@
       "cumulative_cost_usd": 0.005231995,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.055135883,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 65,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 57,
@@ -339,9 +315,7 @@
       "cumulative_cost_usd": 0.004125532,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.059261415,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 104,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 64,
@@ -365,9 +339,7 @@
       "cumulative_cost_usd": 0.002783478,
       "cumulative_new_cost_usd": 0.0,
       "global_cumulative_cost_usd": 0.062044893,
-      "global_cumulative_new_cost_usd": 0.0,
-      "cumulative_L_r_unique": 30,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.0
     },
     {
       "bug_id": 4,
@@ -391,9 +363,7 @@
       "cumulative_cost_usd": 0.00907909,
       "cumulative_new_cost_usd": 0.004334523,
       "global_cumulative_cost_usd": 0.066379416,
-      "global_cumulative_new_cost_usd": 0.004334523,
-      "cumulative_L_r_unique": 102,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.004334523
     },
     {
       "bug_id": 4,
@@ -417,9 +387,7 @@
       "cumulative_cost_usd": 0.013555926,
       "cumulative_new_cost_usd": 0.008811359,
       "global_cumulative_cost_usd": 0.070856252,
-      "global_cumulative_new_cost_usd": 0.008811359,
-      "cumulative_L_r_unique": 141,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.008811359
     },
     {
       "bug_id": 6,
@@ -443,9 +411,7 @@
       "cumulative_cost_usd": 0.009200624,
       "cumulative_new_cost_usd": 0.004414095,
       "global_cumulative_cost_usd": 0.075270347,
-      "global_cumulative_new_cost_usd": 0.013225454,
-      "cumulative_L_r_unique": 92,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.013225454
     },
     {
       "bug_id": 6,
@@ -469,9 +435,7 @@
       "cumulative_cost_usd": 0.013124686,
       "cumulative_new_cost_usd": 0.008338157,
       "global_cumulative_cost_usd": 0.079194409,
-      "global_cumulative_new_cost_usd": 0.017149516,
-      "cumulative_L_r_unique": 132,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.017149516
     },
     {
       "bug_id": 6,
@@ -495,9 +459,7 @@
       "cumulative_cost_usd": 0.018424964,
       "cumulative_new_cost_usd": 0.013638435,
       "global_cumulative_cost_usd": 0.084494687,
-      "global_cumulative_new_cost_usd": 0.022449794,
-      "cumulative_L_r_unique": 180,
-      "target_reached_unique": true
+      "global_cumulative_new_cost_usd": 0.022449794
     },
     {
       "bug_id": 13,
@@ -521,9 +483,7 @@
       "cumulative_cost_usd": 0.008046709,
       "cumulative_new_cost_usd": 0.004190923,
       "global_cumulative_cost_usd": 0.08868561,
-      "global_cumulative_new_cost_usd": 0.026640717,
-      "cumulative_L_r_unique": 85,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.026640717
     },
     {
       "bug_id": 13,
@@ -547,9 +507,7 @@
       "cumulative_cost_usd": 0.01177611,
       "cumulative_new_cost_usd": 0.007920324,
       "global_cumulative_cost_usd": 0.092415011,
-      "global_cumulative_new_cost_usd": 0.030370118,
-      "cumulative_L_r_unique": 121,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.030370118
     },
     {
       "bug_id": 13,
@@ -573,9 +531,7 @@
       "cumulative_cost_usd": 0.015638103,
       "cumulative_new_cost_usd": 0.011782317,
       "global_cumulative_cost_usd": 0.096277004,
-      "global_cumulative_new_cost_usd": 0.034232111,
-      "cumulative_L_r_unique": 154,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.034232111
     },
     {
       "bug_id": 13,
@@ -599,9 +555,7 @@
       "cumulative_cost_usd": 0.020905849,
       "cumulative_new_cost_usd": 0.017050063,
       "global_cumulative_cost_usd": 0.10154475,
-      "global_cumulative_new_cost_usd": 0.039499857,
-      "cumulative_L_r_unique": 196,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.039499857
     },
     {
       "bug_id": 64,
@@ -625,9 +579,7 @@
       "cumulative_cost_usd": 0.005449994,
       "cumulative_new_cost_usd": 0.002666516,
       "global_cumulative_cost_usd": 0.104211266,
-      "global_cumulative_new_cost_usd": 0.042166373,
-      "cumulative_L_r_unique": 67,
-      "target_reached_unique": false
+      "global_cumulative_new_cost_usd": 0.042166373
     },
     {
       "bug_id": 64,
@@ -651,35 +603,7 @@
       "cumulative_cost_usd": 0.007863368,
       "cumulative_new_cost_usd": 0.00507989,
       "global_cumulative_cost_usd": 0.10662464,
-      "global_cumulative_new_cost_usd": 0.044579747,
-      "cumulative_L_r_unique": 97,
-      "target_reached_unique": true
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "round": 6,
-      "calls": 5,
-      "new_calls": 5,
-      "http_attempts": 5,
-      "csr_v2": 5,
-      "compiled_files": 3,
-      "methods_listed": 46,
-      "methods_passing_at_t": 43,
-      "reported_cost_usd": 0.004514208,
-      "cost_missing_successes": 0,
-      "generation_seconds": 118.001,
-      "evaluation_seconds": 2.414,
-      "D_r": 207,
-      "cumulative_L_r_unique": 230,
-      "target_reached_unique": true,
-      "ledger_index": 26,
-      "cumulative_L_r": 283,
-      "target_reached": true,
-      "cumulative_cost_usd": 0.025420057,
-      "cumulative_new_cost_usd": 0.021564271,
-      "global_cumulative_cost_usd": 0.111138848,
-      "global_cumulative_new_cost_usd": 0.049093955
+      "global_cumulative_new_cost_usd": 0.044579747
     }
   ],
   "files": [
@@ -19117,590 +19041,6 @@
         }
       ],
       "run_seconds": 0.217
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "technique": "ZSL",
-      "round": 6,
-      "directory": "runs/lang/13/SerializationUtils/ZSL/r6",
-      "response": "runs/lang/13/SerializationUtils/ZSL/r6/response.md",
-      "response_sha256": "d1891cbfb47d0830cc69850701f51746be6df47ae772883ec384beaa14202b1f",
-      "msr_detected": true,
-      "csr_v2": true,
-      "class_name": "SerializationUtilsTest",
-      "package": "org.apache.commons.lang3",
-      "fqcn": "org.apache.commons.lang3.SerializationUtilsTest",
-      "csr_success": null,
-      "selection": "markers",
-      "marker_pair": true,
-      "braces_balanced": true,
-      "html_detected": false,
-      "file": "generated/p2/Lang-13/r6/ZSL/SerializationUtilsTest.java",
-      "extracted_sha256": "1daa8f544ad2ef24ed1d7faf832b25b44c5bc3f23ead52fbad4d50db5fffca8c",
-      "compile": {
-        "command": [
-          "javac",
-          "-d",
-          "generated/p2/Lang-13/r6/ZSL/classes",
-          "-cp",
-          "/work/d4j/Lang-13b/target/classes:/work/d4j/Lang-13b/target/tests:/defects4j/framework/projects/lib/junit-4.12-hamcrest-1.3.jar:/defects4j/framework/projects/Lang/lib/easymock.jar:/defects4j/framework/projects/Lang/lib/commons-io.jar:/defects4j/framework/projects/Lang/lib/cglib.jar:/defects4j/framework/projects/Lang/lib/asm.jar:tools/junit-4.13.2.jar:tools/hamcrest-core-1.3.jar",
-          "generated/p2/Lang-13/r6/ZSL/SerializationUtilsTest.java"
-        ],
-        "compile_ok": false,
-        "exit_status": 1,
-        "seconds": 0.349,
-        "error_count": 2,
-        "categories": {
-          "CFS": 2
-        },
-        "stderr_file": "generated/p2/Lang-13/r6/ZSL/javac.err"
-      }
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "technique": "FSL",
-      "round": 6,
-      "directory": "runs/lang/13/SerializationUtils/FSL/r6",
-      "response": "runs/lang/13/SerializationUtils/FSL/r6/response.md",
-      "response_sha256": "08e6e2dddffa5841f186da5b5fc2823d6458151f6ba17821dcd64eab536ddc78",
-      "msr_detected": true,
-      "csr_v2": true,
-      "class_name": "SerializationUtilsTest",
-      "package": "org.apache.commons.lang3",
-      "fqcn": "org.apache.commons.lang3.SerializationUtilsTest",
-      "csr_success": null,
-      "selection": "markers",
-      "marker_pair": true,
-      "braces_balanced": true,
-      "html_detected": false,
-      "file": "generated/p2/Lang-13/r6/FSL/SerializationUtilsTest.java",
-      "extracted_sha256": "4c0b4d4bd3d699f16ac0cf9aa5935b42b490822df88f8bda7c77ac3cf2baf6b9",
-      "compile": {
-        "command": [
-          "javac",
-          "-d",
-          "generated/p2/Lang-13/r6/FSL/classes",
-          "-cp",
-          "/work/d4j/Lang-13b/target/classes:/work/d4j/Lang-13b/target/tests:/defects4j/framework/projects/lib/junit-4.12-hamcrest-1.3.jar:/defects4j/framework/projects/Lang/lib/easymock.jar:/defects4j/framework/projects/Lang/lib/commons-io.jar:/defects4j/framework/projects/Lang/lib/cglib.jar:/defects4j/framework/projects/Lang/lib/asm.jar:tools/junit-4.13.2.jar:tools/hamcrest-core-1.3.jar",
-          "generated/p2/Lang-13/r6/FSL/SerializationUtilsTest.java"
-        ],
-        "compile_ok": true,
-        "exit_status": 0,
-        "seconds": 0.349,
-        "error_count": 0,
-        "categories": {},
-        "stderr_file": "generated/p2/Lang-13/r6/FSL/javac.err"
-      },
-      "run_file": "generated/p2/Lang-13/r6/FSL/run-t.jsonl",
-      "listed": 13,
-      "counts": {
-        "pass": 11,
-        "error": 2
-      },
-      "methods": [
-        {
-          "method": "testClone_DeepCopy",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 31,
-          "launch": 1
-        },
-        {
-          "method": "testSerializeToByteArray_NullObject",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserializeByteArray_NullArgument",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testClassLoaderAwareObjectInputStream_FallbackToThreadContext",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_WithValidStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testClone_NullInput",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_WithNullOutputStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_OutputStreamThrowsOnWrite",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testClassLoaderAwareObjectInputStream_BothLoadersFail",
-          "status": "error",
-          "message": "Unexpected exception, expected<org.apache.commons.lang3.SerializationException> but was<java.lang.AssertionError>",
-          "exception": "java.lang.Exception",
-          "milliseconds": 2,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_WithNullInputStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testClone_WithSerializableSubclass",
-          "status": "error",
-          "message": "java.io.NotSerializableException: org.apache.commons.lang3.SerializationUtilsTest",
-          "exception": "org.apache.commons.lang3.SerializationException",
-          "milliseconds": 8,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_AndDeserialize_RoundTrip",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserializeByteArray_RoundTrip",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        }
-      ],
-      "run_seconds": 0.279
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "technique": "CoT",
-      "round": 6,
-      "directory": "runs/lang/13/SerializationUtils/CoT/r6",
-      "response": "runs/lang/13/SerializationUtils/CoT/r6/response.md",
-      "response_sha256": "8cf52a21e5f31187da747d5b54604be69724d1f38ed01d03fa81b642a0859b79",
-      "msr_detected": true,
-      "csr_v2": true,
-      "class_name": "SerializationUtilsTest",
-      "package": "org.apache.commons.lang3",
-      "fqcn": "org.apache.commons.lang3.SerializationUtilsTest",
-      "csr_success": null,
-      "selection": "markers",
-      "marker_pair": true,
-      "braces_balanced": true,
-      "html_detected": false,
-      "file": "generated/p2/Lang-13/r6/CoT/SerializationUtilsTest.java",
-      "extracted_sha256": "bdfd6aec4e294b3f8999a74196724517c365c9a3a487b8a6d11945a60bdb5f6f",
-      "compile": {
-        "command": [
-          "javac",
-          "-d",
-          "generated/p2/Lang-13/r6/CoT/classes",
-          "-cp",
-          "/work/d4j/Lang-13b/target/classes:/work/d4j/Lang-13b/target/tests:/defects4j/framework/projects/lib/junit-4.12-hamcrest-1.3.jar:/defects4j/framework/projects/Lang/lib/easymock.jar:/defects4j/framework/projects/Lang/lib/commons-io.jar:/defects4j/framework/projects/Lang/lib/cglib.jar:/defects4j/framework/projects/Lang/lib/asm.jar:tools/junit-4.13.2.jar:tools/hamcrest-core-1.3.jar",
-          "generated/p2/Lang-13/r6/CoT/SerializationUtilsTest.java"
-        ],
-        "compile_ok": true,
-        "exit_status": 0,
-        "seconds": 0.301,
-        "error_count": 0,
-        "categories": {},
-        "stderr_file": "generated/p2/Lang-13/r6/CoT/javac.err"
-      },
-      "run_file": "generated/p2/Lang-13/r6/CoT/run-t.jsonl",
-      "listed": 14,
-      "counts": {
-        "pass": 14
-      },
-      "methods": [
-        {
-          "method": "testSerialize_ToByteArrayOutputStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 20,
-          "launch": 1
-        },
-        {
-          "method": "testClone_DeepCopy",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 4,
-          "launch": 1
-        },
-        {
-          "method": "testSerializeToByteArray_RoundTrip",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerializeToByteArray_NullObject",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserializeByteArray_NullArgument",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_InputStreamThrowsIOException",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserializeByteArray_CorruptedData",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_WithNullOutputStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_OutputStreamThrowsIOException",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserializeByteArray_RoundTrip",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_NullInputStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testClone_NullReturnsNull",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testPublicConstructor",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_ValidStream",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        }
-      ],
-      "run_seconds": 0.223
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "technique": "ToT",
-      "round": 6,
-      "directory": "runs/lang/13/SerializationUtils/ToT/r6",
-      "response": "runs/lang/13/SerializationUtils/ToT/r6/response.md",
-      "response_sha256": "921cf5b1c623a19fc874b4aab32217b0951b00c6a654c4c45fdc5b714b75fa35",
-      "msr_detected": true,
-      "csr_v2": true,
-      "class_name": "SerializationUtilsTest",
-      "package": "org.apache.commons.lang3",
-      "fqcn": "org.apache.commons.lang3.SerializationUtilsTest",
-      "csr_success": null,
-      "selection": "markers",
-      "marker_pair": true,
-      "braces_balanced": true,
-      "html_detected": false,
-      "file": "generated/p2/Lang-13/r6/ToT/SerializationUtilsTest.java",
-      "extracted_sha256": "9fb8043d33c614b5afad22195634615cea203b4ef3d2bcefc91d082fa60a83c5",
-      "compile": {
-        "command": [
-          "javac",
-          "-d",
-          "generated/p2/Lang-13/r6/ToT/classes",
-          "-cp",
-          "/work/d4j/Lang-13b/target/classes:/work/d4j/Lang-13b/target/tests:/defects4j/framework/projects/lib/junit-4.12-hamcrest-1.3.jar:/defects4j/framework/projects/Lang/lib/easymock.jar:/defects4j/framework/projects/Lang/lib/commons-io.jar:/defects4j/framework/projects/Lang/lib/cglib.jar:/defects4j/framework/projects/Lang/lib/asm.jar:tools/junit-4.13.2.jar:tools/hamcrest-core-1.3.jar",
-          "generated/p2/Lang-13/r6/ToT/SerializationUtilsTest.java"
-        ],
-        "compile_ok": false,
-        "exit_status": 1,
-        "seconds": 0.322,
-        "error_count": 2,
-        "categories": {
-          "IT": 1,
-          "CFS": 1
-        },
-        "stderr_file": "generated/p2/Lang-13/r6/ToT/javac.err"
-      }
-    },
-    {
-      "bug_id": 13,
-      "class": "SerializationUtils",
-      "technique": "GToT",
-      "round": 6,
-      "directory": "runs/lang/13/SerializationUtils/GToT/r6",
-      "response": "runs/lang/13/SerializationUtils/GToT/r6/response.md",
-      "response_sha256": "270c3414552913aef6e22b8906248c09f52b4668e48e9d6d22bbad6655a4120a",
-      "msr_detected": true,
-      "csr_v2": true,
-      "class_name": "SerializationUtilsTest",
-      "package": "org.apache.commons.lang3",
-      "fqcn": "org.apache.commons.lang3.SerializationUtilsTest",
-      "csr_success": null,
-      "selection": "markers",
-      "marker_pair": true,
-      "braces_balanced": true,
-      "html_detected": false,
-      "file": "generated/p2/Lang-13/r6/GToT/SerializationUtilsTest.java",
-      "extracted_sha256": "08327df082b5df1845a8fd4e5cfe7025a8ec8cb084f882b72b931953f0bfe640",
-      "compile": {
-        "command": [
-          "javac",
-          "-d",
-          "generated/p2/Lang-13/r6/GToT/classes",
-          "-cp",
-          "/work/d4j/Lang-13b/target/classes:/work/d4j/Lang-13b/target/tests:/defects4j/framework/projects/lib/junit-4.12-hamcrest-1.3.jar:/defects4j/framework/projects/Lang/lib/easymock.jar:/defects4j/framework/projects/Lang/lib/commons-io.jar:/defects4j/framework/projects/Lang/lib/cglib.jar:/defects4j/framework/projects/Lang/lib/asm.jar:tools/junit-4.13.2.jar:tools/hamcrest-core-1.3.jar",
-          "generated/p2/Lang-13/r6/GToT/SerializationUtilsTest.java"
-        ],
-        "compile_ok": true,
-        "exit_status": 0,
-        "seconds": 0.319,
-        "error_count": 0,
-        "categories": {},
-        "stderr_file": "generated/p2/Lang-13/r6/GToT/javac.err"
-      },
-      "run_file": "generated/p2/Lang-13/r6/GToT/run-t.jsonl",
-      "listed": 19,
-      "counts": {
-        "pass": 18,
-        "fail": 1
-      },
-      "methods": [
-        {
-          "method": "testClone_DeepCopy",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 24,
-          "launch": 1
-        },
-        {
-          "method": "testClone_NullInputReturnsNull",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_ByteArray_ValidData",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testClassLoaderAwareObjectInputStream_FallbackToThreadContext",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_InputStream_ValidData",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_InputStream_NullThrows",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 5,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ToOutputStream_NullObjectWritesNullReference",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_InputStream_CorruptedDataThrows",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testClone_NonSerializableFails",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 7,
-          "launch": 1
-        },
-        {
-          "method": "testConstructorIsPublic",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ToOutputStream_NullStreamThrows",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ClosesStreamEvenOnFailure",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 1,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ReturnsByteArray",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_ByteArray_CorruptedDataThrows",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_ByteArray_NullThrows",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ToOutputStream_WritesBytes",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ReturnsByteArrayForNull",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testSerialize_ToOutputStream_IOExceptionIsWrapped",
-          "status": "pass",
-          "message": null,
-          "exception": null,
-          "milliseconds": 0,
-          "launch": 1
-        },
-        {
-          "method": "testDeserialize_ClosesStreamEvenOnFailure",
-          "status": "fail",
-          "message": "InputStream must be closed even when deserialization fails",
-          "exception": "java.lang.AssertionError",
-          "milliseconds": 1,
-          "launch": 1
-        }
-      ],
-      "run_seconds": 0.243
     }
   ],
   "sessions": [
@@ -19717,7 +19057,7 @@
     "6": 181,
     "11": 104,
     "12": 87,
-    "13": 283,
+    "13": 240,
     "17": 49,
     "19": 53,
     "28": 61,
@@ -19727,34 +19067,8 @@
     "57": 139,
     "64": 99
   },
-  "reported_cost_usd": 0.111138848,
-  "new_reported_cost_usd": 0.049093955,
+  "reported_cost_usd": 0.10662464,
+  "new_reported_cost_usd": 0.044579747,
   "completed_at": "2026-10-03T08:07:50.705204+00:00",
-  "wall_seconds": 860.751,
-  "dedup_sessions": [
-    {
-      "started_at": "2026-10-03T08:54:29.982670+00:00",
-      "wall_seconds": 121.107,
-      "ended_at": "2026-10-03T08:56:31.091466+00:00"
-    }
-  ],
-  "cumulative_unique_passing": {
-    "4": 141,
-    "5": 100,
-    "6": 180,
-    "11": 92,
-    "12": 81,
-    "13": 230,
-    "17": 49,
-    "19": 53,
-    "28": 61,
-    "43": 38,
-    "54": 62,
-    "55": 65,
-    "57": 104,
-    "64": 97
-  },
-  "dedup_complete": true,
-  "dedup_completed_at": "2026-10-03T08:56:31.091431+00:00",
-  "dedup_wall_seconds": 121.107
+  "wall_seconds": 860.751
 }

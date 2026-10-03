@@ -1,6 +1,6 @@
 {
   "approved_after": "Step 3",
-  "authorized_through": "Step 5",
+  "authorized_through": "Step 9",
   "model": "openai/gpt-oss-120b",
   "temperature": 0.7,
   "max_tokens": 4096,
@@ -55,5 +55,21 @@
     17,
     28,
     57
+  ],
+  "llm_population": "passing at t and not an exact duplicate within record",
+  "round_stop": "L_r_unique >= full D_r or 30 total rounds",
+  "dedup_rule": "SHA-256 of original source inside method braces after removing every whitespace character",
+  "dedup_order": [
+    "round ascending",
+    "ZSL",
+    "FSL",
+    "CoT",
+    "ToT",
+    "GToT",
+    "source order"
+  ],
+  "step8_llm_counts": "report raw passing, exact duplicates removed, and unique population together",
+  "step5b_initial_short_records": [
+    13
   ]
 }

@@ -1,6 +1,41 @@
-# Part 2 populations at t — Step 5b
+# Part 2 B addendum — exact duplicate removal
+
+Step 5b is complete. All records meet full D_r on unique passing methods. Step 6 uses this frozen unique population. The original handover-part2-b.md remains the historical raw-count handover.
+
+## Deduplication rule and audit
 
 LLM methods enter survival only when they passed at t and are the first passing occurrence of their body hash within the record. Hashes use the original source inside method braces with all whitespace removed, including whitespace in comments and string literals. Comments otherwise remain. Method names, annotations and signatures are outside the hash. Ledger order is round, ZSL/FSL/CoT/ToT/GToT, source order. No test source is edited.
+
+Hashed 2020 test methods across every structured file, including nonpassing methods and compile failures. results/p2-dedup.csv records every body hash, source position, baseline status, duplicate flag and retained identity. Nonpassing methods never displace passing ones. The original population and round ledger are archived under results/archive/step5-before-dedup/.
+
+| Record | Before raw | Initial duplicates | Initial unique | Extra rounds | Final raw | Final duplicates | Final unique |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Lang-4 | 143 | 2 | 141 | 0 | 143 | 2 | 141 |
+| Lang-5 | 130 | 30 | 100 | 0 | 130 | 30 | 100 |
+| Lang-6 | 181 | 1 | 180 | 0 | 181 | 1 | 180 |
+| Lang-11 | 104 | 12 | 92 | 0 | 104 | 12 | 92 |
+| Lang-12 | 87 | 6 | 81 | 0 | 87 | 6 | 81 |
+| Lang-13 | 240 | 44 | 196 | 1 | 283 | 53 | 230 |
+| Lang-17 | 49 | 0 | 49 | 0 | 49 | 0 | 49 |
+| Lang-19 | 53 | 0 | 53 | 0 | 53 | 0 | 53 |
+| Lang-28 | 61 | 0 | 61 | 0 | 61 | 0 | 61 |
+| Lang-43 | 38 | 0 | 38 | 0 | 38 | 0 | 38 |
+| Lang-54 | 76 | 14 | 62 | 0 | 76 | 14 | 62 |
+| Lang-55 | 66 | 1 | 65 | 0 | 66 | 1 | 65 |
+| Lang-57 | 139 | 35 | 104 | 0 | 139 | 35 | 104 |
+| Lang-64 | 99 | 2 | 97 | 0 | 99 | 2 | 97 |
+
+Before: 1466 raw = 147 duplicates + 1319 unique. After: 1509 raw = 156 duplicates + 1353 unique.
+
+## Additional generation
+
+| Record | Round | Calls | Passing raw added | Cumulative unique | Reported cost USD |
+|---|---:|---:|---:|---:|---:|
+| Lang-13 | 6 | 5 | 43 | 230 | 0.004514208 |
+
+Extra calls: 5; extra reported cost $0.004514208. All rounds including reused round 1: 130 calls, $0.111138848. Step 5b generation/evaluation/dedup wall time: 121.107 s; population report: 0.204 s. Every additional request retained the rendered prompt and fixed parameters; all attempt artifacts and cumulative cost are saved.
+
+## Frozen population
 
 | Record / CUT | D_r | D_r_own | L_r raw | Duplicates removed | L_r_unique | Rounds | Unique target reached | ZSL | FSL | CoT | ToT | GToT |
 |---|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|
@@ -28,3 +63,11 @@ Lang-6 and Lang-17 have no matching own test class. Lang-28 has one, but its sol
 Lang-57 developer survival is N/A at every time point: all developer methods are trigger tests; no developer baseline at t. Exclude Lang-57 from both 2×2 comparisons. Its LLM survival uses the unique population.
 
 139 LLM methods passed at the buggy version where every developer method fails. For Lang-57, removing 35 exact duplicates leaves 104 unique passing LLM methods.
+
+## Validation
+
+Verified all 2,020 source hashes and ledger selections, all 1,509 baseline passes, and all 1,353 frozen population identities. An independent Java AST parser matched test declarations in 124 of 127 structured files; the other three syntactically invalid files were still hashed by the lexical scanner. Existing file evidence and test source hashes are unchanged. All five new HTTP calls succeeded on attempt 1. Round 6 had three compiling files and two compile failures; no source repairs were made. Full evidence: results/p2-dedup-validation.json.
+
+## Continuation
+
+The Step 5 review authorizes Steps 6–9 after this commit. Duplicates are excluded by method selection without source edits. All Step 8 LLM population counts will include raw and removed-duplicate counts. No push.

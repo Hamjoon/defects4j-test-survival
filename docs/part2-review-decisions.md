@@ -1,6 +1,6 @@
 # Part 2 review decisions — approved after Step 3
 
-Source: Gary's review in this conversation, 2026-10-03. These decisions amend the original Part 2 instructions. The next authorized stop is after Step 5; do not start survival runs or push at that stop.
+Source: Gary's review in this conversation, 2026-10-03. These decisions amend the original Part 2 instructions. The Step 5 review below authorizes continuation through the committed Step 9 handover. No push.
 
 ## Generation
 
@@ -30,4 +30,16 @@ State this observation in both handover-part2-b and handover-part2-c without fur
 
 ## Unchanged constraints
 
-Never edit generated or developer test files. Do not push. Obtain the API key only from docker/.env through compose env_file; never record it in artifacts. Stop after the Step 5 handover and commit.
+Never edit generated or developer test files. Do not push. Obtain the API key only from docker/.env through compose env_file; never record it in artifacts. Stop after the Step 9 handover and commit.
+
+## Step 5 review: exact duplicate methods (Step 5b)
+
+Gary authorized Step 5b and Steps 6–9 in this conversation. This supersedes the raw-count stopping condition and the previous Step 5 stop. Commit the Step 5b artifacts, then continue to the committed Step 9 handover without pushing.
+
+Hash every LLM test method in every structured source, including methods in files that fail compilation and methods that do not pass at t. The normalized body is the original source between the opening and closing method braces with every whitespace character removed. Names, signatures and annotations are excluded; comments and string contents remain, with whitespace removed there as well. Use SHA-256 of its UTF-8 encoding.
+
+Deduplication is per record and among passing occurrences only. Keep the first passing occurrence by round ascending, then ZSL, FSL, CoT, ToT, GToT, then source order. A nonpassing occurrence cannot displace a later passing one. Mark later passing occurrences as duplicates and record the retained round/technique/method. Identical bodies in different records remain independent.
+
+The Step 6 LLM population is passing methods with is_duplicate = false. Exclude duplicates from execution through runner selection; never remove them from source files. Continue complete five-call rounds only for records with L_r_unique < full D_r, stopping at the unique target or 30 total rounds. Preserve existing prompts, parameters, retry rules, concurrency and call evidence. Add cumulative_L_r_unique to every ledger row. Record raw counts, removed duplicates, unique counts, D_r, D_r_own, rounds and unique technique shares in the population report and the before/after and cost evidence in handover-part2-b-addendum.md.
+
+Every Step 8 count of the LLM population must expose the raw passing population and the number of exact duplicates removed. Developer populations and their target remain unchanged. The historical Lang-57 observation remains 139 raw passing methods; its survival population uses the deduplicated count.
