@@ -1,6 +1,6 @@
 # Step 7 patch-direction review — Steps 5b and 6 complete
 
-Step 5b was committed as e53a72c. Step 6 has completed all 105 record/timepoint pairs and 12,803 method/timepoint rows. Steps 7–9 are pending the patch-direction decision; handover-part2-c.md has not been written as a completed handover. No push.
+Step 5b was committed as 95fb1a4. Step 6 has completed all 105 record/timepoint pairs and 12,803 method/timepoint rows. Steps 7–9 are pending the patch-direction decision; handover-part2-c.md has not been written as a completed handover. No push.
 
 ## Concrete contradiction
 

@@ -4,7 +4,7 @@ Status: **Step 2 completed under the addendum; stopped at the Step 3 mixed/neith
 
 All ten `classes.modified` comparisons passed, all exports succeeded, and all five buggy versions compiled. Four dataset sources match only the buggy revision after the required normalization. Cli-5 `Util` matches neither revision because of a one-character difference in a comment (`classs` in JSON versus `classes` in the checkouts). Step 3's explicit mixed/neither stop rule remains in force under the addendum, so Step 4 and the normal Step 5 completion have not been performed.
 
-Closure-1b was checked out and removed with its active export file; Closure-4b/4f replaces it, and the original stop evidence is archived under `results/archive/stage0-initial-stop/` and commit `78edc47`.
+Closure-1b was checked out and removed with its active export file; Closure-4b/4f replaces it, and the original stop evidence is archived under `results/archive/stage0-initial-stop/` and commit `7406fa1`.
 
 ## Repository and bundle
 
@@ -12,8 +12,8 @@ Closure-1b was checked out and removed with its active export file; Closure-4b/4
 - Branch: `experiment/2026-10-week1-d4j-replication`.
 - Imported exactly the requested author artifacts; source bundle and copied author files were not edited.
 - Dataset check passed: 477 records, 16 projects, 403 distinct project/bug pairs.
-- Import commit: `f4a6484`; environment commit: `15b7fe4`.
-- Revised ten-checkout checks and addendum: `ae2df0d`.
+- Import commit: `ada451c`; environment commit: `ada9f53`.
+- Revised ten-checkout checks and addendum: `a506a5c`.
 - No remote configured, no push, no model calls, and no API key recorded.
 
 ## Step 1: environment passed
